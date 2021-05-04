@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "academyTagNpmStart": "[[start:npm-scripts]]",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "node:machine-mock:start": "nodemon --watch src/machine-mock --exec ts-node src/machine-mock/index.ts",
@@ -11,6 +12,7 @@
     "node:machine-mock:docker:build-aarch64": "npm run node:machine-mock:build && docker buildx build --platform linux/arm64 -t machine-mock-aarch64 -f src/machine-mock/Dockerfile --load .",
     "node:machine-mock:package": "ax apps package src/machine-mock/ax-manifest.yml"
   },
+  "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
   "author": "",
   "license": "ISC",
