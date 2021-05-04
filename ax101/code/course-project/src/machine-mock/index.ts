@@ -35,7 +35,7 @@ Pond.default().then((pond) => {
     const changeEvent: MachineStateChangedEvent = {
       eventType: 'machine_state_changed',
       device: 'Mock Machine',
-      state: newState,
+      state: newState === MachineState.ERROR ? Math.floor(Math.random() * 10) + 11 : newState,
       stateDesc: MachineState[newState]
     }
     console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
