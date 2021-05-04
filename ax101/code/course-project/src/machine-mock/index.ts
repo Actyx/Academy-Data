@@ -1,6 +1,6 @@
 // [[start:import]]
 import { Pond, Tags } from '@actyx/pond'
-// [[start:import]]
+// [[end:import]]
 
 // [[start:states]]
 enum MachineState {
