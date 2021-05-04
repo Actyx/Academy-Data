@@ -13,7 +13,7 @@ enum MachineState {
 // [[start:change-event]]
 type MachineStateChangedEvent = {
   eventType: 'machine_state_changed'  // fixed event type
-  device: string,                     // name of the machine that changed its state
+  device: string,                     // name of the machine
   state: number,                      // state code
   stateDesc?: string,                 // state name
 }
