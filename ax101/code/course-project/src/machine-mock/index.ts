@@ -12,7 +12,7 @@ enum MachineState {
 
 // [[start:change-event]]
 type MachineStateChangedEvent = {
-  eventType: 'machine_state_changed'  // fixed event type
+  eventType: 'machine_state_changed',  // fixed event type
   device: string,                     // name of the machine
   state: number,                      // state code
   stateDesc?: string,                 // state name
@@ -45,6 +45,6 @@ Pond.default().then((pond) => {
       changeEvent
     )
 
-  }, 1000)
+  }, 10_000)
 })
   // [[end:impl]]
