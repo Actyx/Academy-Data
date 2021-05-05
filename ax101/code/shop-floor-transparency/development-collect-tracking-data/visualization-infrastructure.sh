@@ -28,3 +28,10 @@ docker run -d \
     --add-host="db:172.17.0.1" \
     grafana/grafana:7.5.4
 [[end:grafana]]
+
+[[start:containers]]
+$ docker ps
+CONTAINER ID   IMAGE                   COMMAND                  CREATED          STATUS          PORTS                    NAMES
+a6fcc2a4140f   grafana/grafana:7.5.4   "/run.sh"                8 seconds ago    Up 6 seconds    0.0.0.0:3000->3000/tcp   cool_beaver
+bc28cc4ca311   postgres:12-alpine      "docker-entrypoint.s…"   13 seconds ago   Up 12 seconds   0.0.0.0:5432->5432/tcp   angry_bohr
+[[end:containers]]
