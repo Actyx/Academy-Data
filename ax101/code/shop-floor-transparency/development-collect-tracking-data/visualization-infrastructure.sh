@@ -13,9 +13,9 @@ src/dashboard
 
 [[start:postgres]]
 docker run -d \
-    -e POSTGRES_USER=postgres \
-    -e POSTGRES_PASSWORD=postgres \
-    -e POSTGRES_DB=changeit \
+    -e POSTGRES_USER=actyx \
+    -e POSTGRES_PASSWORD=changeit \
+    -e POSTGRES_DB=dashboard \
     -p 5432:5432 \
     postgres:12-alpine
 [[end:postgres]]
