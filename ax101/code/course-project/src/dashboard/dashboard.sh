@@ -72,14 +72,14 @@ init() {
     --add-host="db:172.17.0.1" \
     grafana/grafana:7.5.4
   echo "... done." 
-  echo "Open the dashboard at http://localhost:3000/d/actyx-adb/actyx-demo-box or log in at http://localhost:3000/login using admin/admin" 
+  echo "Open the dashboard at http://localhost:3000/d/actyx-ax101-1/ax101-dashboard or log in at http://localhost:3000/login using admin/admin" 
 }
 start() {
   echo "Starting existing containers w/ pre-populated data" 
   docker start ax101-postgres
   docker start ax101-grafana
   echo "... done." 
-  echo "Open the dashboard at http://localhost:3000/d/actyx-adb/actyx-demo-box or log in at http://localhost:3000/login using admin/admin" 
+  echo "Open the dashboard at http://localhost:3000/d/actyx-ax101-1/ax101-dashboard or log in at http://localhost:3000/login using admin/admin" 
 }
 stop() {
   echo "Stopping running containers" 
