@@ -26,14 +26,15 @@ const main = async () => {
   // [[end:init-db]]
   // [[end:scaffold]]
   const pond = await Pond.default()
-  console.info('init PostgreSQL connection')
   // [[start:init-db]]
+  console.info('init PostgreSQL connection')
   const db = await initDb(settings.db)
-  // [[end:init-db]]
+  const tablesResult = await db.query("SELECT tablename FROM pg_catalog.pg_tables where schemaname = 'public'")
+  console.debug(tablesResult.rows)
   console.info('PostgreSQL connected')
+  // [[end:init-db]]
 
-  const r = await db.query("SELECT tablename FROM pg_catalog.pg_tables where schemaname = 'public'")
-  console.debug(pond.info(), r.rows)
+  console.debug(pond.info())
 
   // [[start:scaffold]]
   // [[start:init-db]]
