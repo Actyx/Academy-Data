@@ -1,6 +1,6 @@
 [[start:create-module]]
-mkdir -p src/dashboard/provisioning/datasources
-mkdir -p src/dashboard/provisioning/dashboards  
+$ mkdir -p src/dashboard/provisioning/datasources
+$ mkdir -p src/dashboard/provisioning/dashboards  
 [[end:create-module]]
 
 [[start:module]]
@@ -11,7 +11,7 @@ src/dashboard
 [[end:module]]
 
 [[start:postgres]]
-docker run -d \
+$ docker run -d \
     -e POSTGRES_USER=actyx \
     -e POSTGRES_PASSWORD=changeit \
     -e POSTGRES_DB=dashboard \
@@ -20,7 +20,7 @@ docker run -d \
 [[end:postgres]]
 
 [[start:grafana]]
-docker run -d \
+$ docker run -d \
     -v ${PWD}/src/provisioning:/etc/grafana/provisioning/ \
     -e GF_AUTH_ANONYMOUS_ENABLED=true \
     -p 3000:3000 \
