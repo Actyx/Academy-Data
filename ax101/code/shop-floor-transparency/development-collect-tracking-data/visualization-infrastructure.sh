@@ -5,7 +5,6 @@ mkdir -p src/dashboard/provisioning/dashboards
 
 [[start:module]]
 src/dashboard
-├── data/
 └── provisioning/
     ├── dashboards/
     └── datasources/
