@@ -1,0 +1,21 @@
+apiVersion: 1
+
+deleteDatasources:
+  - name: PostgreSQL
+
+datasources:
+  - name: PostgreSQL
+    type: postgres
+    url: db:5432
+    database: dashboard
+    user: actyx
+    isDefault: true
+    secureJsonData:
+      password: "changeit"
+    jsonData:
+      sslmode: "disable"
+      maxOpenConns: 0
+      maxIdleConns: 2
+      connMaxLifetime: 14400
+      postgresVersion: 1200 # v12
+      timescaledb: false
