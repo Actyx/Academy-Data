@@ -21,7 +21,7 @@ $ docker run -d \
 
 [[start:grafana]]
 $ docker run -d \
-    -v ${PWD}/src/provisioning:/etc/grafana/provisioning/ \
+    -v ${PWD}/src/dashboard/provisioning:/etc/grafana/provisioning/ \
     -e GF_AUTH_ANONYMOUS_ENABLED=true \
     -p 3000:3000 \
     --add-host="db:172.17.0.1" \
