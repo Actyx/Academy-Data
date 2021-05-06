@@ -10,7 +10,12 @@
     "node:machine-mock:build": "tsc src/machine-mock/index.ts --outDir build/machine-mock --esModuleInterop --skipLibCheck",
     "node:machine-mock:docker:build": "npm run node:machine-mock:build && docker build -t machine-mock -f src/machine-mock/Dockerfile .",
     "node:machine-mock:docker:build-aarch64": "npm run node:machine-mock:build && docker buildx build --platform linux/arm64 -t machine-mock-aarch64 -f src/machine-mock/Dockerfile --load .",
-    "node:machine-mock:package": "ax apps package src/machine-mock/ax-manifest.yml"
+    "node:machine-mock:package": "ax apps package src/machine-mock/ax-manifest.yml",
+    "node:db-exporter:start": "nodemon --watch src/db-exporter --exec ts-node src/db-exporter/index.ts",
+    "node:db-exporter:build": "tsc src/db-exporter/index.ts --outDir build/db-exporter --esModuleInterop --skipLibCheck",
+    "node:db-exporter:docker:build": "npm run node:db-exporter:build && docker build -t db-exporter -f src/db-exporter/Dockerfile .",
+    "node:db-exporter:docker:build-aarch64": "npm run node:db-exporter:build && docker buildx build --platform linux/arm64 -t db-exporter-aarch64 -f src/db-exporter/Dockerfile --load .",
+    "node:db-exporter:package": "ax apps package src/db-exporter/ax-manifest.yml"
   },
   "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
