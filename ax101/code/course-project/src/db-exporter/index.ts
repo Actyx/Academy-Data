@@ -23,8 +23,8 @@ const exitApp = () => process.exit(6)
 // [[start:scaffold]]
 // [[start:init-db]]
 const main = async () => {
-  // [[end:scaffold]]
   // [[end:init-db]]
+  // [[end:scaffold]]
   const pond = await Pond.default()
   console.info('init PostgreSQL connection')
   // [[start:init-db]]
