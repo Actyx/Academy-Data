@@ -1,5 +1,6 @@
 // [[start:import]]
 import { Pond, Tags } from '@actyx/pond'
+import { MachineStateChangedEvent } from '../fish/events'
 // [[end:import]]
 
 // [[start:states]]
@@ -9,15 +10,6 @@ enum MachineState {
   ERROR,
 }
 // [[end:states]]
-
-// [[start:change-event]]
-type MachineStateChangedEvent = {
-  eventType: 'machine_state_changed',  // fixed event type
-  device: string,                     // name of the machine
-  state: number,                      // state code
-  stateDesc?: string,                 // state name
-}
-// [[end:change-event]]
 
 // [[start:random]]
 function randomMachineState(): MachineState {
