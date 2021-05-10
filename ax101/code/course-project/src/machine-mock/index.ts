@@ -37,8 +37,12 @@ Pond.default().then((pond) => {
     const machineStateTag = Tag<MachineStateChangedEvent>('Machine.state').withId(machineId)
     
     console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
-    pond.emit(machineTag.and(machineStateTag), changeEvent)
-    
+
+    pond.emit(
+      machineTag.and(machineStateTag),
+      changeEvent
+    )
+
   }, 10_000)
 })
 // [[end:impl]]
