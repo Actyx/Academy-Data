@@ -34,7 +34,6 @@ export const initDb = async (settings: DbSettings): Promise<Client> => {
     await client.query(
         `CREATE TABLE IF NOT EXISTS public.machine_state_change
       (
-      (
             id character varying(40) NOT NULL,
             time timestamp with time zone NOT NULL,
             device character varying(100) NOT NULL,
@@ -56,7 +55,7 @@ export const updateDb = async (
     eventChunk: ActyxEvent<MachineStateChangedEvent>[],
     lowerBound: OffsetMap,
 ): Promise<void> => {
-    await insertStateEvent(pg, eventChunk)
+    await insertStateEvents(pg, eventChunk)
     await storeOffsetMap(pg, lowerBound)
 }
 // [[end:update-db]]
@@ -88,7 +87,7 @@ export const loadOffsetMap = async (client: Client): Promise<OffsetMap> => {
 // [[end:get-offsets]]
 
 // [[start:insert-event]]
-export const insertStateEvent = async (
+export const insertStateEvents = async (
     client: Client,
     events: ReadonlyArray<ActyxEvent<MachineStateChangedEvent>>,
 ): Promise<void> => {

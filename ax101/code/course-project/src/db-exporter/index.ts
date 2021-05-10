@@ -35,9 +35,13 @@ const main = async () => {
   console.info('PostgreSQL connected')
   // [[end:init-db]]
 
-  // [[start:bulk-insert]]
+
+  // [[start:insert-process-state]]
   let lowerBound = await loadOffsetMap(db)
   let queryActive = false
+  // [[start:insert-process-state]]
+  
+  // [[start:bulk-insert]]
   const bulkInsert = async (lowerBound: OffsetMap): Promise<OffsetMap> => {
     queryActive = true
     const newLowerBound = await pond.events().queryAllKnownChunked(
