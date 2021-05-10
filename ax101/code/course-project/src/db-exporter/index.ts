@@ -1,6 +1,7 @@
 // [[start:scaffold]]
-import { Pond } from '@actyx/pond'
-import { Client } from 'pg'
+import { ActyxEvent, OffsetMap, Pond, Tag } from '@actyx/pond'
+import { MachineStateChangedEvent } from '../fish/events'
+import { getOffsetMap, initDb, updateDb } from './db'
 // [[end:scaffold]]
 
 // [[start:settings]]
@@ -13,7 +14,6 @@ const settings = {
     database: 'dashboard',
   },
 }
-export type Settings = typeof settings
 // [[end:settings]]
 
 // [[start:scaffold]]
@@ -34,8 +34,47 @@ const main = async () => {
   console.info('PostgreSQL connected')
   // [[end:init-db]]
 
-  console.debug(pond.info())
+  let lowerBound = await getOffsetMap(db)
 
+  let queryActive = false
+
+  const bulkInsert = async (lowerBound: OffsetMap): Promise<OffsetMap> => {
+    queryActive = true
+    const newLowerBound = await pond.events().queryAllKnownChunked(
+      {
+        lowerBound,
+        order: 'Asc',
+        query: Tag('Machine.state'),
+      },
+      100,
+      async (chunk) => {
+        console.info('add events:', { lng: chunk.events.length })
+        const events = chunk.events.filter(e => {
+          console.log(e)
+          return true
+        })
+        await updateDb(db, events as ActyxEvent<MachineStateChangedEvent>[], chunk.upperBound)
+      },
+    )
+    queryActive = false
+    return newLowerBound
+  }
+
+  // trigger a new export after 5 Seconds
+  setInterval(() => {
+    if (queryActive === false) {
+      console.debug('start next export run', { lowerBound })
+      bulkInsert(lowerBound)
+        .then((bound) => (lowerBound = bound))
+        .catch((e: unknown) => {
+          console.error(`restart app after an exception in bulkInsert`, e)
+          exitApp()
+        })
+    } else {
+      console.warn('blocked by backpressure')
+    }
+  }, 5000)
+  console.info('DB-Exporter started')
   // [[start:scaffold]]
   // [[start:init-db]]
 }
@@ -50,37 +89,4 @@ main().catch((e: unknown) => {
 // [[end:scaffold]]
 
 
-// [[start:init-db]]
-export const initDb = async (settings: Settings['db']): Promise<Client> => {
-  const { host, port, database, password, user } = settings
-  const client = new Client({
-    host,
-    database,
-    port,
-    password,
-    user,
-  })
-  await client.connect()
-
-  await client.query(
-    `CREATE TABLE IF NOT EXISTS public.offset_map (
-      id integer NOT NULL,
-      offset_map text NOT NULL,
-      CONSTRAINT offset_map_pkey PRIMARY KEY (id)
-      )`,
-  )
-  await client.query(
-    `CREATE TABLE IF NOT EXISTS public.machine_state_change
-        (
-          id character varying(40) NOT NULL,
-          time timestamp with time zone NOT NULL,
-          device character varying(100) NOT NULL,
-          new_state integer NOT NULL,
-          new_state_desc character varying(100),
-          CONSTRAINT machine_state_change_pkey PRIMARY KEY (id)
-          )`,
-  )
-
-  return client
-}
-// [[end:init-db]]
+    
