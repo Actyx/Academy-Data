@@ -1,7 +1,7 @@
 // [[start:scaffold]]
-import { ActyxEvent, OffsetMap, Pond, Tag } from '@actyx/pond'
-import { MachineStateChangedEvent } from '../fish/events'
-import { getOffsetMap, initDb, updateDb } from './db'
+import { OffsetMap, Pond, Tag } from '@actyx/pond'
+import { isMachineStateChangedEvent } from '../fish/events'
+import { loadOffsetMap, initDb, updateDb } from './db'
 // [[end:scaffold]]
 
 // [[start:settings]]
@@ -14,6 +14,7 @@ const settings = {
     database: 'dashboard',
   },
 }
+export type Settings = typeof settings
 // [[end:settings]]
 
 // [[start:scaffold]]
@@ -34,10 +35,9 @@ const main = async () => {
   console.info('PostgreSQL connected')
   // [[end:init-db]]
 
-  let lowerBound = await getOffsetMap(db)
-
+  // [[start:bulk-insert]]
+  let lowerBound = await loadOffsetMap(db)
   let queryActive = false
-
   const bulkInsert = async (lowerBound: OffsetMap): Promise<OffsetMap> => {
     queryActive = true
     const newLowerBound = await pond.events().queryAllKnownChunked(
@@ -48,32 +48,33 @@ const main = async () => {
       },
       100,
       async (chunk) => {
-        console.info('add events:', { lng: chunk.events.length })
-        const events = chunk.events.filter(e => {
-          console.log(e)
-          return true
-        })
-        await updateDb(db, events as ActyxEvent<MachineStateChangedEvent>[], chunk.upperBound)
+        console.info(`Exporting ${chunk.events.length || 0} events.`)
+        await updateDb(
+          db,
+          chunk.events.filter(isMachineStateChangedEvent)
+          , chunk.upperBound)
       },
     )
     queryActive = false
     return newLowerBound
   }
+  // [[end:bulk-insert]]
 
-  // trigger a new export after 5 Seconds
+  // [[start:insert-interval]]
   setInterval(() => {
     if (queryActive === false) {
-      console.debug('start next export run', { lowerBound })
+      console.debug('Starting export from ', { lowerBound })
       bulkInsert(lowerBound)
         .then((bound) => (lowerBound = bound))
         .catch((e: unknown) => {
-          console.error(`restart app after an exception in bulkInsert`, e)
+          console.error(`Restarting app after an exception in bulkInsert`, e)
           exitApp()
         })
     } else {
-      console.warn('blocked by backpressure')
+      console.warn('Blocked by back pressure, trying again later.')
     }
   }, 5000)
+  // [[end:insert-interval]]
   console.info('DB-Exporter started')
   // [[start:scaffold]]
   // [[start:init-db]]
@@ -89,4 +90,3 @@ main().catch((e: unknown) => {
 // [[end:scaffold]]
 
 
-    
