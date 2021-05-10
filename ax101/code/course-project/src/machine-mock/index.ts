@@ -33,7 +33,7 @@ Pond.default().then((pond) => {
     console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
 
     pond.emit(
-      Tags('Machine:Mock-1', `Machine.state:${newState}`),
+      Tags('Machine', 'Machine:Mock-1', 'Machine.state', `Machine.state:${newState}`),
       changeEvent
     )
 
