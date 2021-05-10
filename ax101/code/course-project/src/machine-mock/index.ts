@@ -1,6 +1,7 @@
 // [[start:import]]
 import { Pond, Tag } from '@actyx/pond'
 import { startOpcuaServer } from './opcua-server'
+import { MachineStateChangedEvent } from '../fish/events'
 // [[end:import]]
 
 // [[start:states]]
@@ -10,15 +11,6 @@ enum MachineState {
   ERROR,
 }
 // [[end:states]]
-
-// [[start:change-event]]
-type MachineStateChangedEvent = {
-  eventType: 'machineStateChanged',  // fixed event type
-  device: string,                     // name of the machine
-  state: number,                      // state code
-  stateDesc?: string,                 // state name
-}
-// [[end:change-event]]
 
 // [[start:random]]
 export function randomMachineState(): MachineState {
