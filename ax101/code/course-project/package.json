@@ -49,6 +49,8 @@
   "dependencies": {
     "@actyx/os-sdk": "^0.3.1",
     "@actyx/pond": "^2.5.1",
+    "fp-ts": "^2.10.5",
+    "io-ts": "^2.2.16",
     "pg": "^8.6.0"
   },
   "academyTagExporterEnd4": "[[end:db-exporter]]"
