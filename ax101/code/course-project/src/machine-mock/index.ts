@@ -25,7 +25,7 @@ Pond.default().then((pond) => {
   setInterval(() => {
     const newState = randomMachineState()
     const changeEvent: MachineStateChangedEvent = {
-      eventType: 'machine_state_changed',
+      eventType: 'machineStateChanged',
       device: 'Mock Machine',
       state: newState === MachineState.ERROR ? Math.floor(Math.random() * 10) + 11 : newState,
       stateDesc: MachineState[newState]
