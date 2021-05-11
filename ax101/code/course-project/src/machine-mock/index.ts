@@ -12,7 +12,7 @@ enum MachineState {
 
 // [[start:change-event]]
 type MachineStateChangedEvent = {
-  eventType: 'machine_state_changed',  // fixed event type
+  eventType: 'machineStateChanged',  // fixed event type
   device: string,                     // name of the machine
   state: number,                      // state code
   stateDesc?: string,                 // state name
@@ -33,7 +33,7 @@ Pond.default().then((pond) => {
   setInterval(() => {
     const newState = randomMachineState()
     const changeEvent: MachineStateChangedEvent = {
-      eventType: 'machine_state_changed',
+      eventType: 'machineStateChanged',
       device: 'Mock Machine',
       state: newState === MachineState.ERROR ? Math.floor(Math.random() * 10) + 11 : newState,
       stateDesc: MachineState[newState]
