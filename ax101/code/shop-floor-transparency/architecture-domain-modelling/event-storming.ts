@@ -1,7 +1,7 @@
 // [[start:machineStateChangedEvent]]
 type MachineStateChangedEvent = {
   eventType: 'machineStateChanged'
-  machineId: 'MachineId'
+  device: 'Machine1'
   state: 'newState'
 }
 // [[end:machineStateChangedEvent]]
