@@ -9,7 +9,7 @@ import { isRight } from 'fp-ts/lib/Either'
 // [[start:machine-state-event]]
 export const machineStateChangedEvent = t.intersection([
     t.type({
-        eventType: t.literal('machine_state_changed'),
+        eventType: t.literal('machineStateChanged'),
         device: t.string,
         state: t.number,
     }),
