@@ -33,3 +33,19 @@ Starting export from  { lowerBound: { '9VXqr9PKU2e': 10 } }
 Starting export from  { lowerBound: { '9VXqr9PKU2e': 10 } }
 Exporting 1 events.
 # [[end:start-db-exporter]]
+
+# [[start:verify-batching]]
+Exporting 100 events.
+Exporting 100 events.
+Exporting 100 events.
+Exporting 100 events.
+Exporting 13 events.
+Starting export from  { lowerBound: { '9VXqr9PKU2e': 6012 } }
+Exporting 1 events.
+Starting export from  { lowerBound: { '9VXqr9PKU2e': 6013 } }
+Starting export from  { lowerBound: { '9VXqr9PKU2e': 6013 } }
+Exporting 1 events.
+Starting export from  { lowerBound: { '9VXqr9PKU2e': 6014 } }
+Starting export from  { lowerBound: { '9VXqr9PKU2e': 6014 } }
+Exporting 1 events.
+# [[end:verify-batching]]
