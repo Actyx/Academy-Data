@@ -1,5 +1,5 @@
 // [[start:machineStateChangedEvent]]
-type machineStateChangedEvent = {
+type MachineStateChangedEvent = {
   eventType: 'machineStateChanged'
   machineId: 'MachineId'
   state: 'newState'
