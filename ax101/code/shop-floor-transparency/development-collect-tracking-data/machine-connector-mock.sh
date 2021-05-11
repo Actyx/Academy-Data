@@ -9,18 +9,18 @@ $ npm run node:machine-mock:start
 [nodemon] watching path(s): src/machine-mock/**/*
 [nodemon] watching extensions: ts,json
 [nodemon] starting `ts-node src/machine-mock/index.ts`
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":2,"stateDesc":"ERROR"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":0,"stateDesc":"IDLE"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":2,"stateDesc":"ERROR"}
 [[end:run-connector]]

@@ -4,10 +4,10 @@
 [nodemon] watching path(s): src/machine-mock/**/*
 [nodemon] watching extensions: ts,json
 [nodemon] starting `ts-node src/machine-mock/index.ts`
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":11,"stateDesc":"ERROR"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
-Emitting {"eventType":"machine_state_changed","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":11,"stateDesc":"ERROR"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
+Emitting {"eventType":"machineStateChanged","device":"Mock Machine","state":1,"stateDesc":"RUNNING"}
 # [[end:start-mock-machine]]
 
 
