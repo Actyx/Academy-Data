@@ -4,4 +4,4 @@ type machineStateChangedEvent = {
   machineId: 'MachineId'
   state: 'newState'
 }
-// [[start:machineStateChangedEvent]]
+// [[end:machineStateChangedEvent]]
