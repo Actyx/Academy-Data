@@ -80,7 +80,7 @@ export const loadOffsetMap = async (client: Client): Promise<OffsetMap> => {
     if (res.rowCount > 0 && res.rows[0].offsetMap) {
         return JSON.parse(res.rows[0].offsetMap)
     } else {
-        console.warn('Could not deserialize OffsetMap from database. That is ok, if the application has not yet pushed events to the DB.')
+        console.warn('Could not read OffsetMap from database. That is ok, if the application has not yet pushed events to the DB.')
         return {}
     }
 }
