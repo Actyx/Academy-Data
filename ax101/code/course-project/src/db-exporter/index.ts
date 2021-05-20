@@ -17,7 +17,7 @@ export type Settings = typeof settings
 // [[end:settings]]
 
 // [[start:scaffold]]
-const exitApp = () => process.exit(6)
+const exitApp = () => process.exit(6) // exit with arbitrary error code 6
 // [[end:scaffold]]
 
 // [[start:scaffold]]
