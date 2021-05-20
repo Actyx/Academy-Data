@@ -57,8 +57,8 @@ is `ax101/sht/ctd/mcm/start`.
       * start: [ax101/sht/vd/gp/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/gp/start/ax101/code/course-project)
       * end:  [ax101/sht/vd/gp/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/gp/end/ax101/code/course-project)
     * Prepare Database **[PDB]**
-      * start: [ax101/shtvd/pdb/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/pdb/start/ax101/code/course-project)
-      * end:  [ax101/shtvd/pdb/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/pdb/end/ax101/code/course-project)
+      * start: [ax101/sht/vd/pdb/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/pdb/start/ax101/code/course-project)
+      * end:  [ax101/sht/vd/pdb/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/pdb/end/ax101/code/course-project)
     * Export Event Data **[EED]**
       * start: [ax101/sht/vd/eed/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/eed/start/ax101/code/course-project)
       * end:  [ax101/sht/vd/eed/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/eed/end/ax101/code/course-project)
