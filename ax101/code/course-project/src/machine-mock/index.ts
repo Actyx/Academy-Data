@@ -1,5 +1,5 @@
 // [[start:import]]
-import { Pond, Tags } from '@actyx/pond'
+import { Pond, Tag } from '@actyx/pond'
 import { MachineStateChangedEvent } from '../fish/events'
 // [[end:import]]
 
@@ -30,12 +30,13 @@ Pond.default().then((pond) => {
       state: newState === MachineState.ERROR ? Math.floor(Math.random() * 10) + 11 : newState,
       stateDesc: MachineState[newState]
     }
+    
+    const machineId = 'Mock-1'
+    const machineTag = Tag<MachineStateChangedEvent>('Machine').withId(machineId)
+    const machineStateTag = Tag<MachineStateChangedEvent>('Machine.state').withId(machineId)
+    
     console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
-
-    pond.emit(
-      Tags('Machine', 'Machine:Mock-1', 'Machine.state', `Machine.state:${newState}`),
-      changeEvent
-    )
+    pond.emit(machineTag.and(machineStateTag), changeEvent)
 
   }, 10_000)
 })
