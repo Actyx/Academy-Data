@@ -16,6 +16,7 @@ const server = new OPCUAServer({
     },
     allowAnonymous: false,
     userManager: {
+        // hard coded authentication credentials for the demo
         isValidUser: (username, password) => username === 'actyx' && password === 'actyx',
     },
 })
@@ -63,4 +64,4 @@ export const startOpcuaServer = async () => {
         'session_activated',
         (session) => console.log(`OPC UA session '${session.sessionName}' activated.`))
 }
-// [[start:opcua-server-start]]
+// [[end:opcua-server-start]]
