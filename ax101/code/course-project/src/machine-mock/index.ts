@@ -1,5 +1,6 @@
 // [[start:import]]
 import { Pond, Tag } from '@actyx/pond'
+import { startOpcuaServer } from './opcua-server'
 // [[end:import]]
 
 // [[start:states]]
@@ -20,7 +21,7 @@ type MachineStateChangedEvent = {
 // [[end:change-event]]
 
 // [[start:random]]
-function randomMachineState(): MachineState {
+export function randomMachineState(): MachineState {
   const rand = Math.random()
   if (rand < 0.2) return MachineState.IDLE
   else if (rand < 0.9) return MachineState.RUNNING
@@ -45,7 +46,11 @@ Pond.default().then((pond) => {
     
     console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
     pond.emit(machineTag.and(machineStateTag), changeEvent)
-
+    
   }, 10_000)
 })
-  // [[end:impl]]
+// [[end:impl]]
+
+// [[start:opcua]]
+startOpcuaServer()
+// [[end:opcua]]

@@ -10,7 +10,12 @@
     "node:machine-mock:build": "tsc src/machine-mock/index.ts --outDir build/machine-mock --esModuleInterop --skipLibCheck",
     "node:machine-mock:docker:build": "npm run node:machine-mock:build && docker build -t machine-mock -f src/machine-mock/Dockerfile .",
     "node:machine-mock:docker:build-aarch64": "npm run node:machine-mock:build && docker buildx build --platform linux/arm64 -t machine-mock-aarch64 -f src/machine-mock/Dockerfile --load .",
-    "node:machine-mock:package": "ax apps package src/machine-mock/ax-manifest.yml"
+    "node:machine-mock:package": "ax apps package src/machine-mock/ax-manifest.yml",
+    "node:opcua-plc-mock:start": "nodemon --watch src/opcua-plc-mock --exec ts-node src/opcua-plc-mock/index.ts",
+    "node:opcua-plc-mock:build": "tsc src/opcua-plc-mock/index.ts --outDir build/opcua-plc-mock --esModuleInterop --skipLibCheck",
+    "node:opcua-plc-mock:docker:build": "npm run node:opcua-plc-mock:build && docker build -t opcua-plc-mock -f src/opcua-plc-mock/Dockerfile .",
+    "node:opcua-plc-mock:docker:build-aarch64": "npm run node:opcua-plc-mock:build && docker buildx build --platform linux/arm64 -t opcua-plc-mock-aarch64 -f src/opcua-plc-mock/Dockerfile --load .",
+    "node:opcua-plc-mock:package": "ax apps package src/opcua-plc-mock/ax-manifest.yml"
   },
   "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
