@@ -49,6 +49,8 @@ is `ax101/sht/ctd/mcm/start`.
       * start: [ax101/sht/ctd/mcm/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/mcm/start/ax101/code/course-project)
       * end:  [ax101/sht/ctd/mcm/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/mcm/end/ax101/code/course-project)
     * Connect OPC UA Machine **[OPC]**
+       * start: [ax101/sht/ctd/opc/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/opc/start/ax101/code/course-project)
+      * end:  [ax101/sht/ctd/opc/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/opc/end/ax101/code/course-project)
   * Visualize Data **[VD]**
     * Vizualisation Infrastructure **[VI]**
       * start: [ax101/sht/vd/vi/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/vi/start/ax101/code/course-project)
