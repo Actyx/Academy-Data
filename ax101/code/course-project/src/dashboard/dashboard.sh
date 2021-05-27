@@ -57,9 +57,9 @@ init() {
   mkdir -p $opt_data
   docker run -d --name ax101-postgres --restart always \
     -v ${PWD}/${opt_data}:/var/lib/postgresql/data \
-    -e POSTGRES_USER=postgres \
-    -e POSTGRES_PASSWORD=postgres \
-    -e POSTGRES_DB=postgres \
+    -e POSTGRES_USER=actyx \
+    -e POSTGRES_PASSWORD=changeit \
+    -e POSTGRES_DB=dashboard \
     -p 5432:5432 \
   postgres:12-alpine
 
