@@ -19,7 +19,12 @@
     "node:db-exporter:docker:build": "npm run node:db-exporter:build && docker build -t db-exporter -f src/db-exporter/Dockerfile .",
     "node:db-exporter:docker:build-aarch64": "npm run node:db-exporter:build && docker buildx build --platform linux/arm64 -t db-exporter-aarch64 -f src/db-exporter/Dockerfile --load .",
     "node:db-exporter:package": "ax apps package src/db-exporter/ax-manifest.yml",
-    "academyTagExporterEnd2": "[[end:db-exporter]]"
+    "academyTagExporterEnd2": "[[end:db-exporter]]",
+    "node:opcua-connector:start": "nodemon --watch src/opcua-connector --exec ts-node src/opcua-connector/index.ts",
+    "node:opcua-connector:build": "tsc src/opcua-connector/index.ts --outDir build/opcua-connector --esModuleInterop --skipLibCheck",
+    "node:opcua-connector:docker:build": "npm run node:opcua-connector:build && docker build -t opcua-connector -f src/opcua-connector/Dockerfile .",
+    "node:opcua-connector:docker:build-aarch64": "npm run node:opcua-connector:build && docker buildx build --platform linux/arm64 -t opcua-connector-aarch64 -f src/opcua-connector/Dockerfile --load .",
+    "node:opcua-connector:package": "ax apps package src/opcua-connector/ax-manifest.yml"
   },
   "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
@@ -49,6 +54,7 @@
   "dependencies": {
     "@actyx/os-sdk": "^0.3.1",
     "@actyx/pond": "^2.5.1",
+    "node-opcua": "^2.43.0",
     "fp-ts": "^2.10.5",
     "io-ts": "^2.2.16",
     "pg": "^8.6.0"

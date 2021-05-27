@@ -1,5 +1,6 @@
 // [[start:import]]
 import { Pond, Tag } from '@actyx/pond'
+import { startOpcuaServer } from './opcua-server'
 import { MachineStateChangedEvent } from '../fish/events'
 // [[end:import]]
 
@@ -12,7 +13,7 @@ enum MachineState {
 // [[end:states]]
 
 // [[start:random]]
-function randomMachineState(): MachineState {
+export function randomMachineState(): MachineState {
   const rand = Math.random()
   if (rand < 0.2) return MachineState.IDLE
   else if (rand < 0.9) return MachineState.RUNNING
@@ -36,8 +37,16 @@ Pond.default().then((pond) => {
     const machineStateTag = Tag<MachineStateChangedEvent>('Machine.state').withId(machineId)
     
     console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
-    pond.emit(machineTag.and(machineStateTag), changeEvent)
+
+    pond.emit(
+      machineTag.and(machineStateTag),
+      changeEvent
+    )
 
   }, 10_000)
 })
-  // [[end:impl]]
+// [[end:impl]]
+
+// [[start:opcua]]
+startOpcuaServer()
+// [[end:opcua]]
