@@ -43,7 +43,7 @@ Pond.default().then(async (pond) => {
     userName: 'actyx',
     password: 'actyx',
   });
-  console.log("connected !");
+  console.log("Connected to OPC UA server!");
   // [[end:session]]
 
   // [[start:subscription]]
@@ -78,7 +78,7 @@ Pond.default().then(async (pond) => {
     );
     
     monitoredItem.on("changed", (dataValue: DataValue) => {
-      console.log(" value has changed : ", dataValue.value.value);
+      console.log("Read changed value from OPC UA server : ", dataValue.value.value);
       // [[end:monitor]]
       // [[start:emission]]
       // emit events
@@ -100,8 +100,6 @@ Pond.default().then(async (pond) => {
       // [[start:monitor]]
   });
   // [[end:monitor]]
-
-  console.log(pond.info())
   // [[start:main-harness]]
 })
 // [[end:main-harness]]
