@@ -6,7 +6,7 @@ import { randomMachineState } from '.'
 // [[end:opcua-prng-import]]
 
 // [[start:opcua-server]]
-const server = new OPCUAServer({
+const serverConfig = {
     port: 4434,
     resourcePath: '/UA/actyx/',
     buildInfo: {
@@ -17,9 +17,10 @@ const server = new OPCUAServer({
     allowAnonymous: false,
     userManager: {
         // hard coded authentication credentials for the demo
-        isValidUser: (username, password) => username === 'actyx' && password === 'actyx',
+        isValidUser: (username: string, password: string) => username === 'actyx' && password === 'actyx',
     },
-})
+}
+const server = new OPCUAServer(serverConfig)
 // [[end:opcua-server]]
 
 
@@ -55,7 +56,7 @@ export const startOpcuaServer = async () => {
 
     // start server & set up logging
     server.start(() =>
-        console.log(`OPC UA server listening on opc.tcp://localhost:${server.endpoints[0].port}.`)
+        console.log(`OPC UA server listening on opc.tcp://localhost:${serverConfig.port}`)
     )
     server.on(
         'session_closed',
