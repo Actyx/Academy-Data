@@ -68,34 +68,36 @@ Pond.default().then(async (pond) => {
     discardOldest: true,
     queueSize: 10
   };
-
+  
   // monitor variable
   const monitoredItem = ClientMonitoredItem.create(
     subscription,
     itemToMonitor,
     parameters,
     TimestampsToReturn.Server
-  );
-
-  monitoredItem.on("changed", (dataValue: DataValue) => {
-    console.log(" value has changed : ", dataValue.value.value);
-    // [[start:emission]]
-    // emit events
-    const machineId = 'Mock-OPCUA'
-    const changeEvent: MachineStateChangedEvent = {
-      eventType: 'machineStateChanged',
-      device: machineId,
-      state: dataValue.value.value, // value from opcua
-      stateDesc: '' // omit description
-    }
-
-    const machineTag = Tag<MachineStateChangedEvent>('Machine').withId(machineId)
-    const machineStateTag = Tag<MachineStateChangedEvent>('Machine.state').withId(machineId)
-
-    console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
-    pond.emit(machineTag.and(machineStateTag), changeEvent)
-
-    // [[end:emission]]
+    );
+    
+    monitoredItem.on("changed", (dataValue: DataValue) => {
+      console.log(" value has changed : ", dataValue.value.value);
+      // [[end:monitor]]
+      // [[start:emission]]
+      // emit events
+      const machineId = 'Mock-OPCUA'
+      const changeEvent: MachineStateChangedEvent = {
+        eventType: 'machineStateChanged',
+        device: machineId,
+        state: dataValue.value.value, // value from opcua
+        stateDesc: '' // omit description
+      }
+      
+      const machineTag = Tag<MachineStateChangedEvent>('Machine').withId(machineId)
+      const machineStateTag = Tag<MachineStateChangedEvent>('Machine.state').withId(machineId)
+      
+      console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
+      pond.emit(machineTag.and(machineStateTag), changeEvent)
+      
+      // [[end:emission]]
+      // [[start:monitor]]
   });
   // [[end:monitor]]
 
