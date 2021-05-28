@@ -57,20 +57,19 @@ const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('Producti
 // [[end:tags]]
 
 // [[start:fish-skeleton]]
+// [[start:fish-tags]]
 export const ProductionOrdersFish = {
 // [[end:fish-skeleton]]
 
-    // [[start:fish-tags]]
     tags: {
         productionOrderTag, 
         productionOrderStartedByTag,
         productionOrderFinishedByTag
     },
-    // [[end:fish-tags]]
-
     // [[start:fish-skeleton]]
     // twin implementation
     all: {
+        // [[end:fish-tags]]
         fishId: FishId.of('ProductionOrders', 'all', 0),
         initialState: { orders: {} }, // initial state value of type ProductionOrdersState
         where: productionOrderTag,
