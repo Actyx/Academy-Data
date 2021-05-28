@@ -57,13 +57,13 @@ const productionOrderTag = Tag<Event>('ProductionOrder')
 
 // [[start:fish-skeleton]]
 export const ProductionOrdersFish = {
-    // tags
+// [[end:fish-skeleton]]
+
+    // [[start:fish-tags]]
     tags: {
-        // [[end:fish-skeleton]]
         productionOrderTag,      
-        // [[start:fish-skeleton]]
     },
-    // [[end:fish-skeleton]]
+    // [[end:fish-tags]]
 
     // [[start:fish-skeleton]]
     // twin implementation
@@ -73,16 +73,12 @@ export const ProductionOrdersFish = {
         where: productionOrderTag,
         onEvent: (state: ProductionOrdersState, event: ProductionOrderEvent) => {
             // [[end:fish-skeleton]]
-
             // [[start:fish-skeleton]]
             return state
         }
     } as Fish<ProductionOrdersState, ProductionOrderEvent>,
     // [[end:fish-skeleton]]
 
-    // [[start:fish-skeleton]]
-    //emitters
-
-    // [[start:fish-skeleton]]
+// [[start:fish-skeleton]]
 }
 // [[end:fish-skeleton]]
