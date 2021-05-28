@@ -1,5 +1,4 @@
 // [[start:fish-skeleton]]
-// [[start:fish-skeleton]]
 import { Fish, FishId, Tag } from "@actyx/pond"
 // [[end:fish-skeleton]]
 
@@ -53,6 +52,8 @@ type ProductionOrderEvent =
 
 // [[start:tags]]
 const productionOrderTag = Tag<Event>('ProductionOrder')
+const productionOrderStartedByTag = Tag<ProductionOrderStartedEvent>('ProductionOrder.startedBy')
+const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('ProductionOrder.finishedBy')
 // [[end:tags]]
 
 // [[start:fish-skeleton]]
@@ -61,7 +62,9 @@ export const ProductionOrdersFish = {
 
     // [[start:fish-tags]]
     tags: {
-        productionOrderTag,      
+        productionOrderTag, 
+        productionOrderStartedByTag,
+        productionOrderFinishedByTag
     },
     // [[end:fish-tags]]
 
