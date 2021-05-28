@@ -31,39 +31,22 @@ is `ax101/sht/ctd/mcm/start`.
 
 ### 🗂 Checkpoint Index AX101
 
-* Shop Floor Transparency **[SHT]**
-  * Domain Modelling **[DM]**
-    * Domain modeling & Deployment Diagram
-    * Step-by-Step - Domain modeling & Deployment Diagram
-    * Summary - Domain modeling & Deployment Diagram
-    * Event Design / Event storming
-    * Events - Event Design
-    * Preparations - Event storming
-    * Step-by-Step - Event storming
-    * Summary - Event-storming
-  * Collect Tracking Data **[CTD]**
-    * Introduction **[I]**
-    * Development Project Setup **[PS]**
-      * end: [ax101/sht/ctd/ps/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/ps/end/ax101/code/course-project)
-    * Machine Connector Mock **[MCM]**
-      * start: [ax101/sht/ctd/mcm/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/mcm/start/ax101/code/course-project)
-      * end:  [ax101/sht/ctd/mcm/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/mcm/end/ax101/code/course-project)
-    * Connect OPC UA Machine **[OPC]**
-       * start: [ax101/sht/ctd/opc/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/opc/start/ax101/code/course-project)
-      * end:  [ax101/sht/ctd/opc/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/opc/end/ax101/code/course-project)
-  * Visualize Data **[VD]**
-    * Vizualisation Infrastructure **[VI]**
-      * start: [ax101/sht/vd/vi/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/vi/start/ax101/code/course-project)
-      * end:  [ax101/sht/vd/vi/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/vi/end/ax101/code/course-project)
-    * Grafana Provisioning **[GP]**
-      * start: [ax101/sht/vd/gp/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/gp/start/ax101/code/course-project)
-      * end:  [ax101/sht/vd/gp/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/gp/end/ax101/code/course-project)
-    * Prepare Database **[PDB]**
-      * start: [ax101/sht/vd/pdb/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/pdb/start/ax101/code/course-project)
-      * end:  [ax101/sht/vd/pdb/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/pdb/end/ax101/code/course-project)
-    * Export Event Data **[EED]**
-      * start: [ax101/sht/vd/eed/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/eed/start/ax101/code/course-project)
-      * end:  [ax101/sht/vd/eed/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/eed/end/ax101/code/course-project)
-    * Configure Dashboard **[CD]**
-      * start: [ax101/sht/vd/cd/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/cd/start/ax101/code/course-project)
-      * end:  [ax101/sht/vd/cd/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/cd/end/ax101/code/course-project)
+|Section|Sub-Section|Lesson|Checkpoint Start|Checkpoint End|
+|---|---|---|---|---|
+|Shop Floor Transparency **[SHT]**|Domain Modelling **[DM]**|Domain modeling & Deployment Diagram|||
+|Shop Floor Transparency **[SHT]**|Domain Modelling **[DM]**|Step-by-Step - Domain modeling & Deployment Diagram|||
+|Shop Floor Transparency **[SHT]**|Domain Modelling **[DM]**|Summary - Domain modeling & Deployment Diagram|||
+|Shop Floor Transparency **[SHT]**|Domain Modelling **[DM]**|Event Design / Event storming|||
+|Shop Floor Transparency **[SHT]**|Domain Modelling **[DM]**|Events - Event Design|||
+|Shop Floor Transparency **[SHT]**|Domain Modelling **[DM]**|Preparations - Event storming|||
+|Shop Floor Transparency **[SHT]**|Domain Modelling **[DM]**|Step-by-Step - Event storming|||
+|Shop Floor Transparency **[SHT]**|Domain Modelling **[DM]**|Summary - Event-storming|||
+|Shop Floor Transparency **[SHT]**|Collect Tracking Data **[CTD]**|Introduction **[I]**|||
+|Shop Floor Transparency **[SHT]**|Collect Tracking Data **[CTD]**|Development Project Setup **[PS]**||[ax101/sht/ctd/ps/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/ps/end/ax101/code/course-project)|
+|Shop Floor Transparency **[SHT]**|Collect Tracking Data **[CTD]**|Machine Connector Mock **[MCM]**|[ax101/sht/ctd/mcm/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/mcm/start/ax101/code/course-project)|[ax101/sht/ctd/mcm/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/mcm/end/ax101/code/course-project)|
+|Shop Floor Transparency **[SHT]**|Collect Tracking Data **[CTD]**|Connect OPC UA Machine **[OPC]**|[ax101/sht/ctd/opc/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/opc/start/ax101/code/course-project)|[ax101/sht/ctd/opc/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/ctd/opc/end/ax101/code/course-project)|
+|Shop Floor Transparency **[SHT]**|Visualize Data **[VD]**|Vizualisation Infrastructure **[VI]**|[ax101/sht/vd/vi/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/vi/start/ax101/code/course-project)|[ax101/sht/vd/vi/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/vi/end/ax101/code/course-project)|
+|Shop Floor Transparency **[SHT]**|Visualize Data **[VD]**|Grafana Provisioning **[GP]**|[ax101/sht/vd/gp/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/gp/start/ax101/code/course-project)|[ax101/sht/vd/gp/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/gp/end/ax101/code/course-project)|
+|Shop Floor Transparency **[SHT]**|Visualize Data **[VD]**|Prepare Database **[PDB]**|[ax101/sht/vd/pdb/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/pdb/start/ax101/code/course-project)|[ax101/sht/vd/pdb/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/pdb/end/ax101/code/course-project)|
+|Shop Floor Transparency **[SHT]**|Visualize Data **[VD]**|Export Event Data **[EED]**|[ax101/sht/vd/eed/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/eed/start/ax101/code/course-project)|[ax101/sht/vd/eed/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/eed/end/ax101/code/course-project)|
+|Shop Floor Transparency **[SHT]**|Visualize Data **[VD]**|Configure Dashboard **[CD]**|[ax101/sht/vd/cd/start](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/cd/start/ax101/code/course-project)|[ax101/sht/vd/cd/end](https://github.com/Actyx/Academy-Data/tree/ax101/sht/vd/cd/end/ax101/code/course-project)|
