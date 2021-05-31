@@ -8,7 +8,6 @@ type Order = {
     orderId: string
     state: 'placed' | 'started' | 'finished'
     machineId: string
-    customer: string
     article: string
     amount: number
 }
