@@ -62,9 +62,9 @@ const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('Producti
 // [[start:fish-skeleton]]
 // [[start:fish-tags]]
 export const ProductionOrdersFish = {
-// [[end:fish-skeleton]]
+    // [[end:fish-skeleton]]
     tags: {
-        productionOrderTag, 
+        productionOrderTag,
         productionOrderStartedByTag,
         productionOrderFinishedByTag
     },
@@ -75,14 +75,67 @@ export const ProductionOrdersFish = {
         fishId: FishId.of('ProductionOrders', 'all', 0),
         initialState: { orders: {} }, // initial state value of type ProductionOrdersState
         where: productionOrderTag,
+        // [[start:on-event]]
+        // [[start:on-event-1]]
         onEvent: (state, event) => {
             // [[end:fish-skeleton]]
+            switch (event.eventType) {
+                case 'productionOrderCreated':
+                    state.orders[event.orderId] = {
+                        orderId: event.orderId,
+                        state: 'placed',
+                        machineId: event.machineId,
+                        amount: event.amount,
+                        article: event.article,
+                    }
+                    return state
+
+                case 'productionOrderStarted':
+                    if (state.orders[event.orderId]) {
+                        state.orders[event.orderId].state = 'started'
+
+                    }
+                    // [[end:on-event-1]]
+                    else {
+                        state.orders[event.orderId] = {
+                            orderId: event.orderId,
+                            state: 'placed',
+                            machineId: event.machineId,
+                            amount: -1,
+                            article: 'unknown',
+                        }
+                    }
+                    // [[start:on-event-1]]
+                    return state
+
+                case 'productionOrderFinished':
+                    if (state.orders[event.orderId]) {
+                        state.orders[event.orderId].state = 'finished'
+                    }
+                    // [[end:on-event-1]]
+                    else {
+                        state.orders[event.orderId] = {
+                            orderId: event.orderId,
+                            state: 'placed',
+                            machineId: event.machineId,
+                            amount: -1,
+                            article: 'unknown',
+                        }
+                    }
+                    // [[start:on-event-1]]
+                    return state
+
+                default:
+                    break
+            }
             // [[start:fish-skeleton]]
             return state
         }
+        // [[end:on-event-1]]
+        // [[end:on-event]]
     } as Fish<ProductionOrdersState, ProductionOrderEvent>,
     // [[end:fish-skeleton]]
 
-// [[start:fish-skeleton]]
+    // [[start:fish-skeleton]]
 }
 // [[end:fish-skeleton]]
