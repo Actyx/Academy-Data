@@ -54,7 +54,7 @@ type ProductionOrderEvent =
 // [[end:event-type-po]]
 
 // [[start:tags]]
-const productionOrderTag = Tag<Event>('ProductionOrder')
+const productionOrderTag = Tag<ProductionOrderEvent>('ProductionOrder')
 const productionOrderStartedByTag = Tag<ProductionOrderStartedEvent>('ProductionOrder.startedBy')
 const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('ProductionOrder.finishedBy')
 // [[end:tags]]
