@@ -7,7 +7,6 @@ type Order = {
     orderId: string
     state: 'placed' | 'started' | 'finished'
     machineId: string
-    customer: string
     article: string
     amount: number
 }
@@ -23,7 +22,11 @@ export type ProductionOrdersState = {
 //[[start:event-type-created]]
 export type ProductionOrderCreatedEvent = {
     eventType: 'productionOrderCreated'
-} & Order
+    orderId: string
+    machineId: string
+    article: string
+    amount: number
+}
 //[[end:event-type-created]]
 
 //[[start:event-type-started]]
@@ -72,7 +75,7 @@ export const ProductionOrdersFish = {
         fishId: FishId.of('ProductionOrders', 'all', 0),
         initialState: { orders: {} }, // initial state value of type ProductionOrdersState
         where: productionOrderTag,
-        onEvent: (state: ProductionOrdersState, event: ProductionOrderEvent) => {
+        onEvent: (state, event) => {
             // [[end:fish-skeleton]]
             // [[start:fish-skeleton]]
             return state
