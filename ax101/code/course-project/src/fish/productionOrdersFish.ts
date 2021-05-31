@@ -59,49 +59,57 @@ const productionOrderStartedByTag = Tag<ProductionOrderStartedEvent>('Production
 const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('ProductionOrder.finishedBy')
 // [[end:tags]]
 
+// [[start:emit-created]]
 export const emitProductionOrderCreatedEvent = (
     pond: Pond,
     orderId: string,
     machineId: string,
     article: string,
     amount: number,
-  ): PendingEmission =>
+): PendingEmission =>
     pond.emit(productionOrderTag.withId(orderId), {
-      eventType: 'productionOrderCreated',
-      orderId,
-      machineId,
-      article,
-      amount,
-    })
-  
-  export const emitProductionOrderStartedEvent = (
-    pond: Pond,
-    orderId: string,
-    machineId: string,
-  ): PendingEmission =>
-    pond.emit(productionOrderTag.withId(orderId).and(productionOrderStartedByTag.withId(machineId)), {
-      eventType: 'productionOrderStarted',
-      orderId,
-      machineId,
-    })
-  
-  export const emitProductionOrderFinishedEvent = (
-    pond: Pond,
-    orderId: string,
-    machineId: string,
-  ): PendingEmission =>
-    pond.emit(
-      productionOrderTag.withId(orderId).and(productionOrderFinishedByTag.withId(machineId)),
-      {
-        eventType: 'productionOrderFinished',
+        eventType: 'productionOrderCreated',
         orderId,
         machineId,
-      },
+        article,
+        amount,
+    })
+// [[end:emit-created]]
+
+// [[start:emit-started]]
+export const emitProductionOrderStartedEvent = (
+    pond: Pond,
+    orderId: string,
+    machineId: string,
+): PendingEmission =>
+    pond.emit(productionOrderTag.withId(orderId).and(productionOrderStartedByTag.withId(machineId)), {
+        eventType: 'productionOrderStarted',
+        orderId,
+        machineId,
+    })
+// [[end:emit-started]]
+
+// [[start:emit-finished]]
+export const emitProductionOrderFinishedEvent = (
+    pond: Pond,
+    orderId: string,
+    machineId: string,
+): PendingEmission =>
+    pond.emit(
+        productionOrderTag.withId(orderId).and(productionOrderFinishedByTag.withId(machineId)),
+        {
+            eventType: 'productionOrderFinished',
+            orderId,
+            machineId,
+        },
     )
-    
+// [[end:emit-finished]]
+
 // [[start:fish-skeleton]]
 // [[start:fish-tags]]
+// [[start:emitters]]
 export const ProductionOrdersFish = {
+    // [[end:emitters]]
     // [[end:fish-skeleton]]
     tags: {
         productionOrderTag,
@@ -110,7 +118,9 @@ export const ProductionOrdersFish = {
     },
     // [[start:fish-skeleton]]
     // twin implementation
+    // [[start:emitters]]
     all: {
+        // [[end:emitters]]
         // [[end:fish-tags]]
         fishId: FishId.of('ProductionOrders', 'all', 0),
         initialState: { orders: {} }, // initial state value of type ProductionOrdersState
@@ -173,8 +183,13 @@ export const ProductionOrdersFish = {
         }
         // [[end:on-event-1]]
         // [[end:on-event]]
+        // [[start:emitters]]
     } as Fish<ProductionOrdersState, ProductionOrderEvent>,
     // [[end:fish-skeleton]]
+    emitProductionOrderCreatedEvent,
+    emitProductionOrderStartedEvent,
+    emitProductionOrderFinishedEvent
+    // [[end:emitters]]
 
     // [[start:fish-skeleton]]
 }
