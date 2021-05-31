@@ -67,13 +67,14 @@ export const emitProductionOrderCreatedEvent = (
     article: string,
     amount: number,
 ): PendingEmission =>
-    pond.emit(productionOrderTag.withId(orderId), {
-        eventType: 'productionOrderCreated',
-        orderId,
-        machineId,
-        article,
-        amount,
-    })
+    pond.emit(productionOrderTag.withId(orderId),
+        {
+            eventType: 'productionOrderCreated',
+            orderId,
+            machineId,
+            article,
+            amount,
+        })
 // [[end:emit-created]]
 
 // [[start:emit-started]]
@@ -82,11 +83,14 @@ export const emitProductionOrderStartedEvent = (
     orderId: string,
     machineId: string,
 ): PendingEmission =>
-    pond.emit(productionOrderTag.withId(orderId).and(productionOrderStartedByTag.withId(machineId)), {
-        eventType: 'productionOrderStarted',
-        orderId,
-        machineId,
-    })
+    pond.emit(
+        productionOrderTag.withId(orderId)
+            .and(productionOrderStartedByTag.withId(machineId)),
+        {
+            eventType: 'productionOrderStarted',
+            orderId,
+            machineId,
+        })
 // [[end:emit-started]]
 
 // [[start:emit-finished]]
@@ -96,7 +100,8 @@ export const emitProductionOrderFinishedEvent = (
     machineId: string,
 ): PendingEmission =>
     pond.emit(
-        productionOrderTag.withId(orderId).and(productionOrderFinishedByTag.withId(machineId)),
+        productionOrderTag.withId(orderId)
+            .and(productionOrderFinishedByTag.withId(machineId)),
         {
             eventType: 'productionOrderFinished',
             orderId,
