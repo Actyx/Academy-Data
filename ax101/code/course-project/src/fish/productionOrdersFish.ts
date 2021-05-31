@@ -1,5 +1,5 @@
 // [[start:fish-skeleton]]
-import { Fish, FishId, Tag } from "@actyx/pond"
+import { Fish, FishId, PendingEmission, Pond, Tag } from "@actyx/pond"
 // [[end:fish-skeleton]]
 
 // [[start:order-type]]
@@ -59,6 +59,46 @@ const productionOrderStartedByTag = Tag<ProductionOrderStartedEvent>('Production
 const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('ProductionOrder.finishedBy')
 // [[end:tags]]
 
+export const emitProductionOrderCreatedEvent = (
+    pond: Pond,
+    orderId: string,
+    machineId: string,
+    article: string,
+    amount: number,
+  ): PendingEmission =>
+    pond.emit(productionOrderTag.withId(orderId), {
+      eventType: 'productionOrderCreated',
+      orderId,
+      machineId,
+      article,
+      amount,
+    })
+  
+  export const emitProductionOrderStartedEvent = (
+    pond: Pond,
+    orderId: string,
+    machineId: string,
+  ): PendingEmission =>
+    pond.emit(productionOrderTag.withId(orderId).and(productionOrderStartedByTag.withId(machineId)), {
+      eventType: 'productionOrderStarted',
+      orderId,
+      machineId,
+    })
+  
+  export const emitProductionOrderFinishedEvent = (
+    pond: Pond,
+    orderId: string,
+    machineId: string,
+  ): PendingEmission =>
+    pond.emit(
+      productionOrderTag.withId(orderId).and(productionOrderFinishedByTag.withId(machineId)),
+      {
+        eventType: 'productionOrderFinished',
+        orderId,
+        machineId,
+      },
+    )
+    
 // [[start:fish-skeleton]]
 // [[start:fish-tags]]
 export const ProductionOrdersFish = {
