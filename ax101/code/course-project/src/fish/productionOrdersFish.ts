@@ -7,7 +7,6 @@ type Order = {
     orderId: string
     state: 'placed' | 'started' | 'finished'
     machineId: string
-    customer: string
     article: string
     amount: number
 }
@@ -23,7 +22,11 @@ export type ProductionOrdersState = {
 //[[start:event-type-created]]
 export type ProductionOrderCreatedEvent = {
     eventType: 'productionOrderCreated'
-} & Order
+    orderId: string
+    machineId: string
+    article: string
+    amount: number
+}
 //[[end:event-type-created]]
 
 //[[start:event-type-started]]
