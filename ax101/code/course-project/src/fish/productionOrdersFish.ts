@@ -60,7 +60,6 @@ const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('Producti
 // [[start:fish-tags]]
 export const ProductionOrdersFish = {
 // [[end:fish-skeleton]]
-
     tags: {
         productionOrderTag, 
         productionOrderStartedByTag,
