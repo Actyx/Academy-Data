@@ -3,11 +3,13 @@ learnings:
 ## Fish
 
 ### State
+
 - how to define simple stage states
 - values in state could be an object
 - connect to fish
 
 ### Events
+
 - same as before, but now it is in a fish
 - emitter functions
 
@@ -31,14 +33,13 @@ learnings:
 - working with simple states
 - last writer wins (array even if there should be just on value)
 
-
 ## UI apps
 
 ### app 1 production-order-system
 
 - create project
 - structure of code
-- root.tsx - <Pond> + import bootstrap-5.0.1
+- root.tsx - `<Pond>` + import bootstrap-5.0.1
 - create components without params
 - create basic UI with input-fields and a button
 - publish event with usePond() and emitter in fish
@@ -53,4 +54,5 @@ learnings:
 - run multiple UIs at the same time, and they interact magically
 
 user extra ui work
+
 - rework the machineId to an input-field
