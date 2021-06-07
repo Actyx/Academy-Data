@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2021-06-07T14:51:42.405Z" agent="5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" etag="pvEI-70MY7jXsL3UaAUe" version="14.7.3" type="google" pages="2">
+  <diagram id="PDwfuDLTobvHbZZJr6hu" name="Overview">
+    <mxGraphModel dx="1149" dy="533" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VUPQLorXZ_MbdF2jShOc-1" value="Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1214" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VUPQLorXZ_MbdF2jShOc-2" value="Machine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1214" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VUPQLorXZ_MbdF2jShOc-3" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Gear.svg;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="VUPQLorXZ_MbdF2jShOc-4" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#434445;aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.nsx_dashboard;" parent="1" vertex="1">
+          <mxGeometry x="1344" y="57" width="50" height="46.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-1" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1273" y="320" as="sourcePoint" />
+            <mxPoint x="1273.41" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-2" value="Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2393" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-3" value="Machine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2393" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-4" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Gear.svg;" parent="1" vertex="1">
+          <mxGeometry x="2519" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-5" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#434445;aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.nsx_dashboard;" parent="1" vertex="1">
+          <mxGeometry x="2523" y="57" width="50" height="46.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-6" value="Intel Nuc&lt;br&gt;&lt;br&gt;Apps: DB-Exporter, PostgreSQL, Grafana" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2393" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-7" value="IPC&lt;br&gt;&lt;br&gt;Apps: Machine-Connector" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2393" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-8" value="&lt;h1&gt;OEE Dashboard&lt;/h1&gt;&lt;p&gt;- Productivity per day&lt;br&gt;&lt;span&gt;- Errors per day&lt;br&gt;&lt;/span&gt;&lt;span&gt;- Time in error state per day&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2513" y="110" width="216" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-9" value="&lt;h1&gt;Machine connector&lt;/h1&gt;&lt;p&gt;- connect to machine&lt;br&gt;- get state data&lt;br&gt;- get error data&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2513" y="410" width="236" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-10" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2452" y="320" as="sourcePoint" />
+            <mxPoint x="2452.4099999999994" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-11" value="Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1999" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-12" value="Machine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1999" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-13" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Gear.svg;" parent="1" vertex="1">
+          <mxGeometry x="2125" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-14" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#434445;aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.nsx_dashboard;" parent="1" vertex="1">
+          <mxGeometry x="2129" y="57" width="50" height="46.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-15" value="Intel Nuc&lt;br&gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1999" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-16" value="IPC&lt;br&gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="1999" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-17" value="&lt;h1&gt;OEE Dashboard&lt;/h1&gt;&lt;p&gt;- Productivity per day&lt;br&gt;&lt;span&gt;- Errors per day&lt;br&gt;&lt;/span&gt;&lt;span&gt;- Time in error state per day&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2119" y="110" width="216" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-18" value="&lt;h1&gt;Machine connector&lt;/h1&gt;&lt;p&gt;- connect to machine&lt;br&gt;- get state data&lt;br&gt;- get error data&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2119" y="410" width="236" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-19" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2058" y="320" as="sourcePoint" />
+            <mxPoint x="2058.4099999999994" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-20" value="Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1518" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-21" value="Machine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1518" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-22" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Gear.svg;" parent="1" vertex="1">
+          <mxGeometry x="1644" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-23" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#434445;aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.nsx_dashboard;" parent="1" vertex="1">
+          <mxGeometry x="1648" y="57" width="50" height="46.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-26" value="&lt;h1&gt;OEE Dashboard&lt;/h1&gt;&lt;p&gt;- Productivity per day&lt;br&gt;&lt;span&gt;- Errors per day&lt;br&gt;&lt;/span&gt;&lt;span&gt;- Time in error state per day&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1638" y="110" width="216" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-27" value="&lt;h1&gt;Machine connector&lt;/h1&gt;&lt;p&gt;- connect to machine&lt;br&gt;- get state data&lt;br&gt;- get error data&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1638" y="410" width="236" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-28" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1577" y="320" as="sourcePoint" />
+            <mxPoint x="1577.4099999999994" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-29" value="Device" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="2867" y="55" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-30" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Gear.svg;" parent="1" vertex="1">
+          <mxGeometry x="2993" y="65" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-31" value="Hardware&lt;br&gt;&lt;br&gt;Apps:&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2867" y="115" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-32" value="&lt;h1&gt;Well-known name&lt;/h1&gt;&lt;p&gt;- key features&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="2987" y="115" width="236" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-33" value="Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="60" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-34" value="Machine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="60" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-35" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Gear.svg;" parent="1" vertex="1">
+          <mxGeometry x="186" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-36" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#434445;aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.nsx_dashboard;" parent="1" vertex="1">
+          <mxGeometry x="190" y="57" width="50" height="46.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-37" value="Intel Nuc&lt;br&gt;&lt;br&gt;Apps: DB-Exporter, PostgreSQL, Grafana" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-38" value="IPC&lt;br&gt;&lt;br&gt;Apps: Machine-Connector" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-39" value="&lt;h1&gt;OEE Dashboard&lt;/h1&gt;&lt;p&gt;- Productivity per day&lt;br&gt;&lt;span&gt;- Errors per day&lt;br&gt;&lt;/span&gt;&lt;span&gt;- Time in error state per day&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="180" y="110" width="216" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-40" value="&lt;h1&gt;Machine connector&lt;/h1&gt;&lt;p&gt;- connect to machine&lt;br&gt;- get state data&lt;br&gt;- get error data&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=left;" parent="1" vertex="1">
+          <mxGeometry x="180" y="410" width="236" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ICp5I_ZUNYP2VNd7wPzo-41" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="119" y="320" as="sourcePoint" />
+            <mxPoint x="119.4099999999994" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="EGdlXMWJz-l1_7YcE1tH" name="EventStorming">
+    <mxGraphModel dx="1149" dy="533" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="8TxKIyK9YtuTnXS0B1ou-0" />
+        <mxCell id="8TxKIyK9YtuTnXS0B1ou-1" parent="8TxKIyK9YtuTnXS0B1ou-0" />
+        <mxCell id="8TxKIyK9YtuTnXS0B1ou-2" value="Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="8TxKIyK9YtuTnXS0B1ou-1" vertex="1">
+          <mxGeometry x="60" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8TxKIyK9YtuTnXS0B1ou-3" value="Machine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="8TxKIyK9YtuTnXS0B1ou-1" vertex="1">
+          <mxGeometry x="60" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8TxKIyK9YtuTnXS0B1ou-4" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Gear.svg;" parent="8TxKIyK9YtuTnXS0B1ou-1" vertex="1">
+          <mxGeometry x="186" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8TxKIyK9YtuTnXS0B1ou-5" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#434445;aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.nsx_dashboard;" parent="8TxKIyK9YtuTnXS0B1ou-1" vertex="1">
+          <mxGeometry x="190" y="57" width="50" height="46.5" as="geometry" />
+        </mxCell>
+        <mxCell id="8TxKIyK9YtuTnXS0B1ou-6" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="8TxKIyK9YtuTnXS0B1ou-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="119" y="320" as="sourcePoint" />
+            <mxPoint x="119.4099999999994" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WuNQ6q_iupE0uAL-jdTH-1" value="machineStatusChanged(device, state, ...)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="8TxKIyK9YtuTnXS0B1ou-1" vertex="1">
+          <mxGeometry x="60" y="420" width="240" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
