@@ -37,7 +37,6 @@ export const MachineFish = {
                 case 'productionOrderStarted':
                     state.currentOrderId.push(event.orderId)
                     return state
-
                 case 'productionOrderFinished':
                     state.currentOrderId = state.currentOrderId.filter((id) => id !== event.orderId)
                     return state
