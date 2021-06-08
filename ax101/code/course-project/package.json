@@ -24,7 +24,10 @@
     "node:opcua-connector:build": "tsc src/opcua-connector/index.ts --outDir build/opcua-connector --esModuleInterop --skipLibCheck",
     "node:opcua-connector:docker:build": "npm run node:opcua-connector:build && docker build -t opcua-connector -f src/opcua-connector/Dockerfile .",
     "node:opcua-connector:docker:build-aarch64": "npm run node:opcua-connector:build && docker buildx build --platform linux/arm64 -t opcua-connector-aarch64 -f src/opcua-connector/Dockerfile --load .",
-    "node:opcua-connector:package": "ax apps package src/opcua-connector/ax-manifest.yml"
+    "node:opcua-connector:package": "ax apps package src/opcua-connector/ax-manifest.yml",
+    "ui:production-order-system:start": "parcel src/production-order-system/index.html --out-dir build/production-order-system/debug",
+    "ui:production-order-system:build": "parcel build src/production-order-system/index.html --out-dir src/production-order-system/release --public-url ./",
+    "ui:production-order-system:package": "ax apps package src/production-order-system/ax-manifest.yml"
   },
   "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
@@ -34,6 +37,8 @@
   "devDependencies": {
     "@types/node": "^15.0.1",
     "@types/pg": "^7.14.11",
+    "@types/react": "^17.0.9",
+    "@types/react-dom": "^17.0.6",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "eslint": "^7.25.0",
@@ -41,9 +46,10 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "nodemon": "^2.0.7",
+    "parcel-bundler": "^1.12.3",
     "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.2"
   },
   "academyTagExporterEnd3": "[[end:db-exporter]]",
   "axp": {
@@ -52,12 +58,16 @@
   },
   "academyTagExporterStart4": "[[start:db-exporter]]",
   "dependencies": {
+    "@actyx-contrib/react-pond": "^2.1.0",
+    "@actyx/industrial-ui": "^1.0.5",
     "@actyx/os-sdk": "^0.3.1",
-    "@actyx/pond": "^2.5.1",
-    "node-opcua": "^2.43.0",
+    "@actyx/pond": "^2.7.0",
     "fp-ts": "^2.10.5",
     "io-ts": "^2.2.16",
-    "pg": "^8.6.0"
+    "node-opcua": "^2.43.0",
+    "pg": "^8.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "academyTagExporterEnd4": "[[end:db-exporter]]"
 }
