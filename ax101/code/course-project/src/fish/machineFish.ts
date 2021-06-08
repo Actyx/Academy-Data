@@ -21,8 +21,8 @@ export const MachineFish = {
     of: (
         machineId: string,
     ): Fish<MachineState, ProductionOrderStartedEvent | ProductionOrderFinishedEvent> => ({
-        // [[end:construction]]
         fishId: FishId.of('MachineState', machineId, 0),
+        // [[end:construction]]
         initialState: { machineId, currentOrderId: [] },
         where: ProductionOrdersFish.tags.productionOrderStartedByTag
             .withId(machineId)
