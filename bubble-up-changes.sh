@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Like this script? 
-# Generate boilerplate for similar ones at https://bashplate.wolfgang-werner.net.
 
 set -o errexit  # exit on error
 set -o nounset  # don't allow unset variables
@@ -45,33 +43,23 @@ while getopts $OPTSPEC option; do
 done
 shift $((OPTIND - 1))
 
-
-# convenience variables
-__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
-__base="$(basename ${__file} .sh)"
-__root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point your project's root
-
 startBranch=$(git rev-parse --abbrev-ref HEAD)
 previousBranch=""
-isAfterStartBranch=false
 echo $startBranch
 
-for branch in $(cat .lesson-branch-sequence); do
-    if [ "$startBranch" = "$branch" ]; then
-        isAfterStartBranch=true
-    fi;
-if [ "$isAfterStartBranch" != "true" ]; then 
+while read branch; do
+  if [ "$startBranch" = "$branch" ]; then
+      previousBranch=$branch
+      continue;
+  elif [ "$previousBranch" == "" ]; then 
     echo "$branch before $startBranch. Ignoring."
     continue; 
-fi;
-git checkout $branch;
-if [ "$previousBranch" != "" ]; then
-    echo "$branch after $startBranch. Merging."
+  else
+    git checkout $branch;
+    echo "$branch after $startBranch. Merging $previousBranch."
     git merge -m "Merging updates from $previousBranch" $previousBranch
     if [ "$opt_push" == "true" ]; then
       git push
     fi;
-fi;
-previousBranch=$branch
-done
+  fi;
+done < .lesson-branch-sequence
