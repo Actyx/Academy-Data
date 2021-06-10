@@ -1,0 +1,9 @@
+{
+  "name": "machine-connector-v2",
+  "version": "1.0.0",
+  "main": "machine-connector-v2/index.js",
+  "license": "ISC",
+  "dependencies": {
+    "@actyx/pond": "2"
+  }
+}

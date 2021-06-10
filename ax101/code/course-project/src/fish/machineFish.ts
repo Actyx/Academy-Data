@@ -26,10 +26,7 @@ export const MachineFish = {
         initialState: { machineId, currentOrderId: [] },
         where: ProductionOrdersFish.tags.productionOrderStartedByTag
             .withId(machineId)
-            .or(
-                ProductionOrdersFish.tags.productionOrderFinishedByTag
-                    .withId(machineId)
-            ),
+            .or(ProductionOrdersFish.tags.productionOrderFinishedByTag.withId(machineId)),
         // [[start:on-event]]
         onEvent: (state, event) => {
             // [[end:skeleton]]
