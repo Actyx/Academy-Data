@@ -35,11 +35,7 @@
     "node:machine-connector-v2:docker:build": "npm run node:machine-connector-v2:build && docker build -t machine-connector-v2 -f src/machine-connector-v2/Dockerfile .",
     "node:machine-connector-v2:docker:build-aarch64": "npm run node:machine-connector-v2:build && docker buildx build --platform linux/arm64 -t machine-connector-v2-aarch64 -f src/machine-connector-v2/Dockerfile --load .",
     "node:machine-connector-v2:package": "ax apps package src/machine-connector-v2/ax-manifest.yml",
-    "node:dummy:start": "nodemon --watch src/dummy --exec ts-node src/dummy/index.ts",
-    "node:dummy:build": "tsc src/dummy/index.ts --outDir build/dummy --esModuleInterop --skipLibCheck",
-    "node:dummy:docker:build": "npm run node:dummy:build && docker build -t dummy -f src/dummy/Dockerfile .",
-    "node:dummy:docker:build-aarch64": "npm run node:dummy:build && docker buildx build --platform linux/arm64 -t dummy-aarch64 -f src/dummy/Dockerfile --load .",
-    "node:dummy:package": "ax apps package src/dummy/ax-manifest.yml"
+    "node:dummy:start": "nodemon --watch src/dummy --exec ts-node src/dummy/index.ts"
   },
   "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
