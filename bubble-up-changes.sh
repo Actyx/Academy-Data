@@ -52,13 +52,6 @@ __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point your project's root
 
-
-# this would be a good place to start writing your actual script.
-echo "$__base was called with..."
-echo -h, --help=$opt_help
-echo -v, --version=$opt_version
-echo -p, --push=$opt_push
-
 startBranch=$(git rev-parse --abbrev-ref HEAD)
 previousBranch=""
 isAfterStartBranch=false
@@ -75,9 +68,10 @@ fi;
 git checkout $branch;
 if [ "$previousBranch" != "" ]; then
     echo "$branch after $startBranch. Merging."
-    exit 1
-    #git reset --hard origin/$branch
-    #git merge $previousBranch
+    git merge -m "Merging updates from $previousBranch" $previousBranch
+    if [ "$opt_push" == "true" ]; then
+      git push
+    fi;
 fi;
 previousBranch=$branch
 done
