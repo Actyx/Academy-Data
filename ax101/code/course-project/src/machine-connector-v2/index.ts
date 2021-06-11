@@ -16,9 +16,9 @@ import { MaterialBatchFishes } from '../fish/materialBatchFish'
 
 // 1. mqtt-start  --  same mqtt-wrapper as scanner connector (wuhu we have found a pattern)
 // 2. handle-mqtt-message -- with different topics
-//    observe-batch-number-scanner
-//    observe-openAssignedToMachine-and-all
-//    map-fish-state-to-machine-control-structure
+// 3. observe-batch-number-scanner
+// 4. observe-openAssignedToMachine-and-all
+// 5. map-fish-state-to-machine-control-structure
 
 // [[start:mqtt-start]]
 Pond.default().then((pond) => {
@@ -145,7 +145,7 @@ Pond.default().then((pond) => {
   const mqttClient = mqtt.connect('mqtt://localhost:1885')
   mqttClient.on('connect', () => {
     console.log('mqtt connection established')
-    mqttClient.subscribe(['material', 'error'], () => {
+    mqttClient.subscribe(['material'], () => {
       console.log('mqtt subscription on "material" and "error" established')
       // [[end:mqtt-start]]
       // [[start:handle-mqtt-message]]
