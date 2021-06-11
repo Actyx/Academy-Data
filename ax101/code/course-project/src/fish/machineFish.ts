@@ -29,19 +29,19 @@ export const MachineFish = {
             .or(ProductionOrdersFish.tags.productionOrderFinishedByTag.withId(machineId)),
         // [[start:on-event]]
         onEvent: (state, event) => {
-        // [[end:skeleton]]
-        switch (event.eventType) {
-            case 'productionOrderStarted':
-            state.currentOrderId.push(event.orderId)
+            // [[end:skeleton]]
+            switch (event.eventType) {
+                case 'productionOrderStarted':
+                    state.currentOrderId.push(event.orderId)
+                    return state
+                case 'productionOrderFinished':
+                    state.currentOrderId = state.currentOrderId.filter((id) => id !== event.orderId)
+                    return state
+                default:
+                    break
+            }
             return state
-            case 'productionOrderFinished':
-            state.currentOrderId = state.currentOrderId.filter((id) => id !== event.orderId)
-            return state
-            default:
-            break
-        }
-        return state
-        // [[start:skeleton]]
+            // [[start:skeleton]]
         },
         // [[end:on-event]]
         // [[start:construction]]

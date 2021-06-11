@@ -52,9 +52,9 @@ export type ProductionOrderFinishedEvent = {
 
 // [[start:event-type-po]]
 type ProductionOrderEvent =
-| ProductionOrderCreatedEvent
-| ProductionOrderStartedEvent
-| ProductionOrderFinishedEvent
+    | ProductionOrderCreatedEvent
+    | ProductionOrderStartedEvent
+    | ProductionOrderFinishedEvent
 // [[end:event-type-po]]
 
 // [[start:tags]]
@@ -71,49 +71,49 @@ const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('Producti
 // [[start:emit-created]]
 // [[start:add-production-order-created-tag]]
 export const emitProductionOrderCreatedEvent = (
-pond: Pond,
-orderId: string,
-machineId: string,
-article: string,
-amount: number,
+    pond: Pond,
+    orderId: string,
+    machineId: string,
+    article: string,
+    amount: number,
 ): PendingEmission =>
-pond.emit(productionOrderTag.withId(orderId).and(productionOrderCreatedTag), {
-    // [[end:add-production-order-created-tag]]
-    eventType: 'productionOrderCreated',
-    orderId,
-    machineId,
-    article,
-    amount,
-})
+    pond.emit(productionOrderTag.withId(orderId).and(productionOrderCreatedTag), {
+        // [[end:add-production-order-created-tag]]
+        eventType: 'productionOrderCreated',
+        orderId,
+        machineId,
+        article,
+        amount,
+    })
 // [[end:emit-created]]
 
 // [[start:emit-started]]
 export const emitProductionOrderStartedEvent = (
-pond: Pond,
-orderId: string,
-machineId: string,
+    pond: Pond,
+    orderId: string,
+    machineId: string,
 ): PendingEmission =>
-pond.emit(productionOrderTag.withId(orderId).and(productionOrderStartedByTag.withId(machineId)), {
-    eventType: 'productionOrderStarted',
-    orderId,
-    machineId,
-})
+    pond.emit(productionOrderTag.withId(orderId).and(productionOrderStartedByTag.withId(machineId)), {
+        eventType: 'productionOrderStarted',
+        orderId,
+        machineId,
+    })
 // [[end:emit-started]]
 
 // [[start:emit-finished]]
 export const emitProductionOrderFinishedEvent = (
-pond: Pond,
-orderId: string,
-machineId: string,
+    pond: Pond,
+    orderId: string,
+    machineId: string,
 ): PendingEmission =>
-pond.emit(
-    productionOrderTag.withId(orderId).and(productionOrderFinishedByTag.withId(machineId)),
-    {
-    eventType: 'productionOrderFinished',
-    orderId,
-    machineId,
-    },
-)
+    pond.emit(
+        productionOrderTag.withId(orderId).and(productionOrderFinishedByTag.withId(machineId)),
+        {
+        eventType: 'productionOrderFinished',
+        orderId,
+        machineId,
+        },
+    )
 // [[end:emit-finished]]
 
 // [[start:fish-skeleton]]
@@ -164,14 +164,14 @@ export const ProductionOrdersFish = {
                     // [[end:on-event-1]]
                     else {
                         state.orders[event.orderId] = {
-                        orderId: event.orderId,
-                        state: 'started',
-                        machineId: event.machineId,
-                        amount: -1,
-                        article: 'unknown',
-                        // [[start:add-consumed-material-to-fish]]
-                        consumedMaterial: {},
-                        // [[end:add-consumed-material-to-fish]]
+                            orderId: event.orderId,
+                            state: 'started',
+                            machineId: event.machineId,
+                            amount: -1,
+                            article: 'unknown',
+                            // [[start:add-consumed-material-to-fish]]
+                            consumedMaterial: {},
+                            // [[end:add-consumed-material-to-fish]]
                         }
                     }
                     // [[start:on-event-1]]
@@ -184,14 +184,14 @@ export const ProductionOrdersFish = {
                     // [[end:on-event-1]]
                     else {
                         state.orders[event.orderId] = {
-                        orderId: event.orderId,
-                        state: 'finished',
-                        machineId: event.machineId,
-                        amount: -1,
-                        article: 'unknown',
-                        // [[start:add-consumed-material-to-fish]]
-                        consumedMaterial: {},
-                        // [[end:add-consumed-material-to-fish]]
+                            orderId: event.orderId,
+                            state: 'finished',
+                            machineId: event.machineId,
+                            amount: -1,
+                            article: 'unknown',
+                            // [[start:add-consumed-material-to-fish]]
+                            consumedMaterial: {},
+                            // [[end:add-consumed-material-to-fish]]
                         }
                     }
                     // [[start:on-event-1]]
@@ -206,14 +206,14 @@ export const ProductionOrdersFish = {
                         state.orders[event.orderId].consumedMaterial[event.batchId] = lastValue + 1
                     } else {
                         state.orders[event.orderId] = {
-                        orderId: event.orderId,
-                        state: 'started',
-                        machineId: event.device,
-                        amount: -1,
-                        article: 'unknown',
-                        consumedMaterial: {
-                            [event.batchId]: 1,
-                        },
+                            orderId: event.orderId,
+                            state: 'started',
+                            machineId: event.device,
+                            amount: -1,
+                            article: 'unknown',
+                            consumedMaterial: {
+                                [event.batchId]: 1,
+                            },
                         }
                     }
                     // [[end:add-consumed-material-to-fish]]
