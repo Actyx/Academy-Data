@@ -4,7 +4,6 @@ import * as uuid from 'uuid'
 import { ProductionOrdersFish } from '../fish/productionOrdersFish'
 
 export const PlaceOrder = (): JSX.Element => {
-  const [customer, setCustomer] = React.useState('')
   const [amount, setAmount] = React.useState(0)
   const [article, setArticle] = React.useState('')
   const [machineId, setMachineId] = React.useState('')
@@ -12,16 +11,14 @@ export const PlaceOrder = (): JSX.Element => {
   const pond = usePond()
 
   const createOrder = () => {
-    if (machineId && customer && article && amount) {
+    if (machineId && article && amount) {
       ProductionOrdersFish.emitProductionOrderCreatedEvent(
         pond,
         uuid.v1().substr(0, 8),
         machineId,
-        customer,
         article,
         amount,
       )
-      setCustomer('')
       setAmount(0)
       setArticle('')
       setMachineId('')
@@ -32,15 +29,6 @@ export const PlaceOrder = (): JSX.Element => {
     <div className="card bg-light">
       <div className="card-header">Place new production order</div>
       <div className="card-body">
-        <div className="input-group mb-3">
-          <span className="input-group-text">Customer</span>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(e) => setCustomer(e.target.value)}
-            value={customer}
-          />
-        </div>
         <div className="input-group mb-3">
           <span className="input-group-text">Article</span>
           <input
@@ -67,7 +55,7 @@ export const PlaceOrder = (): JSX.Element => {
             value={machineId}
             onChange={(e) => setMachineId(e.target.value)}
           >
-            <option selected>Choose...</option>
+            <option>Choose...</option>
             <option value="machine1">Machine 1</option>
             <option value="machine2">Machine 2</option>
             <option value="machine3">Machine 3</option>

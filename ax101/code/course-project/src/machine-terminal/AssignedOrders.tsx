@@ -24,7 +24,6 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Customer</th>
           <th scope="col">State</th>
           <th scope="col">Product</th>
           <th scope="col">Action</th>
@@ -34,7 +33,6 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
         {orders.map((order) => (
           <tr key={order.orderId}>
             <th scope="row">{order.orderId}</th>
-            <td>{order.customer}</td>
             <td>{order.state}</td>
             <td>
               {order.amount} - {order.article}
