@@ -35,7 +35,13 @@
     "node:machine-connector-v2:docker:build": "npm run node:machine-connector-v2:build && docker build -t machine-connector-v2 -f src/machine-connector-v2/Dockerfile .",
     "node:machine-connector-v2:docker:build-aarch64": "npm run node:machine-connector-v2:build && docker buildx build --platform linux/arm64 -t machine-connector-v2-aarch64 -f src/machine-connector-v2/Dockerfile --load .",
     "node:machine-connector-v2:package": "ax apps package src/machine-connector-v2/ax-manifest.yml",
-    "node:dummy:start": "nodemon --watch src/dummy --exec ts-node src/dummy/index.ts"
+    "node:dummy:start": "nodemon --watch src/dummy --exec ts-node src/dummy/index.ts",
+    "ui:production-order-system:start": "parcel src/production-order-system/index.html --out-dir build/production-order-system/debug",
+    "ui:production-order-system:build": "parcel build src/production-order-system/index.html --out-dir src/production-order-system/release --public-url ./",
+    "ui:production-order-system:package": "ax apps package src/production-order-system/ax-manifest.yml",
+    "ui:machine-terminal:start": "parcel src/machine-terminal/index.html --out-dir build/machine-terminal/debug",
+    "ui:machine-terminal:build": "parcel build src/machine-terminal/index.html --out-dir src/machine-terminal/release --public-url ./",
+    "ui:machine-terminal:package": "ax apps package src/machine-terminal/ax-manifest.yml"
   },
   "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
@@ -45,6 +51,9 @@
   "devDependencies": {
     "@types/node": "^15.0.1",
     "@types/pg": "^7.14.11",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.7",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "eslint": "^7.25.0",
@@ -52,6 +61,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "nodemon": "^2.0.7",
+    "parcel-bundler": "^1.12.3",
     "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
@@ -63,14 +73,20 @@
   },
   "academyTagExporterStart4": "[[start:db-exporter]]",
   "dependencies": {
+    "@actyx-contrib/react-pond": "^2.1.0",
     "@actyx-contrib/registry": "^2.1.0",
+    "@actyx/industrial-ui": "^1.0.5",
     "@actyx/os-sdk": "^0.3.1",
     "@actyx/pond": "^2.5.1",
+    "bootstrap": "^5.0.1",
     "fp-ts": "^2.10.5",
     "io-ts": "^2.2.16",
     "mqtt": "^4.2.6",
     "node-opcua": "^2.43.0",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "uuid": "^3.4.0"
   },
   "academyTagExporterEnd4": "[[end:db-exporter]]"
 }
