@@ -7,6 +7,7 @@ import { BatchList } from './view/BatchList'
 
 export const App = (): JSX.Element => {
   const [page, setPage] = React.useState('orders')
+  const allBatches = batchData()
 
   const orders = (page: string) => {
     if (page === 'orders') {
@@ -26,7 +27,6 @@ export const App = (): JSX.Element => {
 
   const batches = (page: string) => {
     if (page === 'batches') {
-      const allBatches = batchData()
       return (
         <div className="row mt-4">
           <div className="col-12">
