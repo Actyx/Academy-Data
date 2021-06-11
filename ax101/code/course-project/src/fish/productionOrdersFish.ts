@@ -109,9 +109,9 @@ export const emitProductionOrderFinishedEvent = (
     pond.emit(
         productionOrderTag.withId(orderId).and(productionOrderFinishedByTag.withId(machineId)),
         {
-        eventType: 'productionOrderFinished',
-        orderId,
-        machineId,
+          eventType: 'productionOrderFinished',
+          orderId,
+          machineId,
         },
     )
 // [[end:emit-finished]]
