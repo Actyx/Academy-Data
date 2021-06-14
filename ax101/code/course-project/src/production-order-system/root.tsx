@@ -2,6 +2,10 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Pond } from '@actyx-contrib/react-pond'
 import { App } from './App'
+// [[start:import-bootstrap]]
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+// [[end:import-bootstrap]]
+
 
 const onError = () => {
   setTimeout(() => location.reload(), 2500)
