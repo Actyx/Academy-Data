@@ -1,3 +1,4 @@
+// [[start:app-skeleton]]
 import * as React from 'react'
 import { OrderList } from './OrderList'
 
