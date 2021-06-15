@@ -19,9 +19,9 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
     .filter((order) => order.state !== 'finished')
     // [[end:order-filter]]
     
-    const machineInProduction = orders.find((order) => order.state === 'started') !== undefined
-    
     // [[start:action]]
+    const machineInProduction = orders.find((order) => order.state === 'started') !== undefined
+
     const started = (orderId: string) => {
         ProductionOrdersFish.emitProductionOrderStartedEvent(pond, orderId, machineId)
     }
