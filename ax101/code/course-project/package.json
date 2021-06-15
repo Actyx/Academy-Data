@@ -28,7 +28,7 @@
     "ui:production-order-system:start": "parcel src/production-order-system/index.html --out-dir build/production-order-system/debug",
     "ui:production-order-system:build": "parcel build src/production-order-system/index.html --out-dir src/production-order-system/release --public-url ./",
     "ui:production-order-system:package": "ax apps package src/production-order-system/ax-manifest.yml",
-    "ui:machine-terminal:start": "parcel src/machine-terminal/index.html --out-dir build/machine-terminal/debug",
+    "ui:machine-terminal:start": "parcel src/machine-terminal/index.html --out-dir build/machine-terminal/debug --port 1235",
     "ui:machine-terminal:build": "parcel build src/machine-terminal/index.html --out-dir src/machine-terminal/release --public-url ./",
     "ui:machine-terminal:package": "ax apps package src/machine-terminal/ax-manifest.yml"
   },
