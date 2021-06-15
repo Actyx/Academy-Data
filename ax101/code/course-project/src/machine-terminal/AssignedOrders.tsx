@@ -8,20 +8,24 @@ type Props = {
 }
 
 // [[start:order-filter]]
+// [[start:action]]
 export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
+    // [[end:action]]
     const pond = usePond()
     const productionOrdersFish = useFish(ProductionOrdersFish.all)
     const orders = Object.values(productionOrdersFish.state.orders)
     // [[end:skeleton]]
     .filter((order) => order.machineId === machineId)
     .filter((order) => order.state !== 'finished')
+    // [[end:order-filter]]
     
     const machineInProduction = orders.find((order) => order.state === 'started') !== undefined
-    // [[start:end-filter]]
     
+    // [[start:action]]
     const started = (orderId: string) => {
         ProductionOrdersFish.emitProductionOrderStartedEvent(pond, orderId, machineId)
     }
+    // [[end:action]]
     
     // [[start:skeleton]]
   return (
@@ -43,6 +47,7 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
             <td>
               {order.amount} - {order.article}
             </td>
+                {/* [[start:action]]  */}
             <td>
               {order.state === 'placed' && (
                   <button
@@ -54,6 +59,7 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
                 </button>
               )}
             </td>
+              {/* [[end:action]]  */}
           </tr>
         ))}
         {/* [[start:skeleton]]  */}
