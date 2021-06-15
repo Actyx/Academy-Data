@@ -28,8 +28,9 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
     // [[end:action]]
     
     // [[start:skeleton]]
-  return (
-    <table className="table">
+    // [[start:table-content]]
+    return (
+      <table className="table">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -49,6 +50,7 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
             </td>
                 {/* [[start:action]]  */}
             <td>
+                {/* [[end:table-content]]  */}
               {order.state === 'placed' && (
                   <button
                   className="btn btn-primary"
@@ -58,6 +60,7 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
                   start
                 </button>
               )}
+              {/* [[start:table-content]]  */}
             </td>
               {/* [[end:action]]  */}
           </tr>
@@ -66,5 +69,6 @@ export const AssignedOrders = ({ machineId }: Props): JSX.Element => {
       </tbody>
     </table>
   )
+  // [[end:table-content]]
 }
 // [[end:skeleton]]
