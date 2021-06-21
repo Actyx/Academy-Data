@@ -1,4 +1,3 @@
-
 // [[start:input-material-scanned-event]]
 export type InputMaterialBatchScannedEvent = {
     eventType: 'inputMaterialBatchScanned'
