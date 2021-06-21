@@ -1,5 +1,6 @@
 // [[start:fish-skeleton]]
 import { Fish, FishId, PendingEmission, Pond, Tag } from "@actyx/pond"
+import { InputMaterialConsumedEvent } from "./materialBatchFish"
 // [[end:fish-skeleton]]
 
 // [[start:order-type]]
@@ -54,7 +55,7 @@ type ProductionOrderEvent =
 // [[end:event-type-po]]
 
 // [[start:tags]]
-const productionOrderTag = Tag<ProductionOrderEvent>('ProductionOrder')
+const productionOrderTag = Tag<ProductionOrderEvent | InputMaterialConsumedEvent>('ProductionOrder')
 const productionOrderStartedByTag = Tag<ProductionOrderStartedEvent>('ProductionOrder.startedBy')
 const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('ProductionOrder.finishedBy')
 // [[end:tags]]
