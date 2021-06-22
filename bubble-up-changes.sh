@@ -50,6 +50,12 @@ previousBranch=""
 echo $startBranch
 
 while read branch; do
+  if [ "$startBranch" = "main" ]; then
+    echo "I'm afraid I can't do that, Dave."
+    echo "Main contains the latest result including all branches."
+    echo "This would mess up all checkpoints, which is probably not what you intend."
+    exit 1;
+  fi;
   if [ "$startBranch" = "$branch" ]; then
       previousBranch=$branch
       continue;
