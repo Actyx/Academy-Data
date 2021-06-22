@@ -62,39 +62,41 @@ export const MaterialBatchFishes = {
   },
   of: (
     batchId: string,
-  ): Fish<MaterialBatchState, MaterialBatchEvent | InputMaterialBatchScannedEvent> => ({
-    // [[end:group]]
-    fishId: FishId.of('MaterialBatch', batchId, 0),
-    initialState: {
-      state: 'unknown',
-      batchId,
-    },
-    where: materialBatchTag.withId(batchId),
-    // [[start:entity-on-event]]
-    onEvent: (state, event) => {
-      switch (event.eventType) {
-        case 'inputMaterialBatchScanned': {
-          if (state.state === 'unknown') {
-            return {
-              state: 'defined',
-              batchId,
-              batchSize: 25, // all pallets have the same size in our case ...
-              availableMaterial: 25, // ... and are always completely filled
-              consumedByMachine: {},
-              consumedByOrder: {},
+    ): Fish<MaterialBatchState, MaterialBatchEvent | InputMaterialBatchScannedEvent> => ({
+      // [[end:group]]
+      // [[start:entity]]
+      fishId: FishId.of('MaterialBatch', batchId, 0),
+      initialState: {
+        state: 'unknown',
+        batchId,
+      },
+      where: materialBatchTag.withId(batchId),
+      // [[start:entity-on-event]]
+      onEvent: (state, event) => {
+        // [[end:entity]]
+        switch (event.eventType) {
+          case 'inputMaterialBatchScanned': {
+            if (state.state === 'unknown') {
+              return {
+                state: 'defined',
+                batchId,
+                batchSize: 25, // all pallets have the same size in our case ...
+                availableMaterial: 25, // ... and are always completely filled
+                consumedByMachine: {},
+                consumedByOrder: {},
+              }
+            } else {
+              // Only the first scan creates the batch in the system.
+              return state
             }
-          } else {
-            // Only the first scan creates the batch in the system.
-            return state
           }
-        }
-        case 'inputMaterialConsumed': {
-          if (state.state === 'defined') {
-            state.availableMaterial -= 1
-
+          case 'inputMaterialConsumed': {
+            if (state.state === 'defined') {
+              state.availableMaterial -= 1
+              
             const previousConsumedByMachine = state.consumedByMachine[event.device] || 0
             state.consumedByMachine[event.device] = previousConsumedByMachine + 1
-
+            
             const previousConsumedByOrder = state.consumedByOrder[event.orderId] || 0
             state.consumedByOrder[event.orderId] = previousConsumedByOrder + 1
           }
@@ -104,7 +106,9 @@ export const MaterialBatchFishes = {
           return state
         }
       }
+      // [[start:entity]]
     },
+    // [[end:entity]]
     // [[end:entity-on-event]]
     // [[start:group]]
   }),
