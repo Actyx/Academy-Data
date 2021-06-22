@@ -119,6 +119,7 @@ export const MaterialBatchFishes = {
     },
     // [[start:group]]
   }),
+  // [[start:all]]
   all: {
     // [[end:group]]
     fishId: FishId.of('MaterialBatchRegistry', 'all', 0),
@@ -131,6 +132,7 @@ export const MaterialBatchFishes = {
       return state
     },
   } as Fish<Record<string, boolean>, InputMaterialBatchScannedEvent>,
+  // [[end:all]]
   // [[start:group]]
 
   emitInputMaterialConsumed,
