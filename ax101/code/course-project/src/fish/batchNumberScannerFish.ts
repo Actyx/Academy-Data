@@ -78,20 +78,20 @@ export const BatchNumberScannerFishes = {
         },
         where: batchNummerScanTag.withId(machineId),
         // [[start:on-event]]
-        onEvent: (state, event, metaData) => {
+        onEvent: (state, event, meta) => {
             switch (event.eventType) {
                 case 'inputMaterialBatchScanned':
                     return {
                         state: 'engaged',
                         machineId,
                         value: event.batchId,
-                        since: metaData.timestampMicros,
+                        since: meta.timestampMicros,
                     }
                 case 'inputMaterialBatchLost':
                     return {
                         state: 'free',
                         machineId,
-                        since: metaData.timestampMicros,
+                        since: meta.timestampMicros,
                     }
                 default:
                     break
