@@ -70,16 +70,16 @@ export const MaterialBatchFishes = {
       batchId,
     },
     where: materialBatchTag.withId(batchId),
+    // [[start:entity-on-event]]
     onEvent: (state, event) => {
-      console.log(event)
       switch (event.eventType) {
         case 'inputMaterialBatchScanned': {
           if (state.state === 'unknown') {
             return {
               state: 'defined',
               batchId,
-              batchSize: 25,
-              availableMaterial: 25,
+              batchSize: 25, // all pallets have the same size in our case ...
+              availableMaterial: 25, // ... and are always completely filled
               consumedByMachine: {},
               consumedByOrder: {},
             }
@@ -90,7 +90,6 @@ export const MaterialBatchFishes = {
         }
         case 'inputMaterialConsumed': {
           if (state.state === 'defined') {
-            // Manipulate state if the batch is defined.
             state.availableMaterial -= 1
 
             const lastConsumedByMachine = state.consumedByMachine[event.device] || 0
@@ -99,24 +98,14 @@ export const MaterialBatchFishes = {
             const lastConsumedByOrder = state.consumedByOrder[event.orderId] || 0
             state.consumedByOrder[event.orderId] = lastConsumedByOrder + 1
           }
-          // We should add a hint, that in this use-case the inputMaterialConsumed can not appear before a inputMaterialBatchScanned
-          // was triggered. (causality)
-          // Fullfil all possible cases is the easy solution in a evtl-const-system.
-          //   But if you know the domain, some cases will never happen and you wast your time :-)
-          /* we should skip this for now and ignore the event.
-          *  else {
-           *      state = MaterialBatchFishes.of(batchId).onEvent(state, {
-           *          eventType: 'inputMaterialBatchScanned',
-           *          machineId: event.device,
-           *          batchId,
-           *      }, metadata)
-           *  }
-          */
+          else {
+            // Exercise: Think about when this case might happen and how to handle it.
+          }
           return state
         }
       }
-      return state
     },
+    // [[start:entity-on-event]]
     // [[start:group]]
   }),
   // [[start:all]]
