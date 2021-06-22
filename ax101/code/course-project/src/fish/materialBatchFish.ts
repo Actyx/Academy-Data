@@ -105,7 +105,7 @@ export const MaterialBatchFishes = {
         }
       }
     },
-    // [[start:entity-on-event]]
+    // [[end:entity-on-event]]
     // [[start:group]]
   }),
   // [[start:all]]
