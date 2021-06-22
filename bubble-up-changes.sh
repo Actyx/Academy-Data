@@ -47,7 +47,6 @@ shift $((OPTIND - 1))
 
 startBranch=$(git rev-parse --abbrev-ref HEAD)
 previousBranch=""
-echo $startBranch
 
 while read branch; do
   if [ "$startBranch" = "main" ]; then
