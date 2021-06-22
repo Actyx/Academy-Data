@@ -56,7 +56,10 @@ const materialBatchScannedTag = Tag<InputMaterialBatchScannedEvent>('MaterialBat
 
 // [[start:group]]
 export const MaterialBatchFishes = {
-  tags: { /* TODO: Add tags */ },
+  tags: { 
+    materialBatchTag,
+    materialBatchScannedTag
+   },
   of: (
     batchId: string,
     ): Fish<MaterialBatchState, MaterialBatchEvent | InputMaterialBatchScannedEvent> => ({
