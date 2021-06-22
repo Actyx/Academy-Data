@@ -92,11 +92,11 @@ export const MaterialBatchFishes = {
           if (state.state === 'defined') {
             state.availableMaterial -= 1
 
-            const lastConsumedByMachine = state.consumedByMachine[event.device] || 0
-            state.consumedByMachine[event.device] = lastConsumedByMachine + 1
+            const previousConsumedByMachine = state.consumedByMachine[event.device] || 0
+            state.consumedByMachine[event.device] = previousConsumedByMachine + 1
 
-            const lastConsumedByOrder = state.consumedByOrder[event.orderId] || 0
-            state.consumedByOrder[event.orderId] = lastConsumedByOrder + 1
+            const previousConsumedByOrder = state.consumedByOrder[event.orderId] || 0
+            state.consumedByOrder[event.orderId] = previousConsumedByOrder + 1
           }
           else {
             // Exercise: Think about when this case might happen and how to handle it.
