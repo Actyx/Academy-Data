@@ -105,10 +105,10 @@ export const MaterialBatchFishes = {
           }
           return state
         }
+        // [[start:entity]]
       }
-      // [[start:entity]]
+      // [[end:entity]]
     },
-    // [[end:entity]]
     // [[end:entity-on-event]]
     // [[start:group]]
   }),
