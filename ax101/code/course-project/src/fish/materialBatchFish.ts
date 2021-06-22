@@ -56,52 +56,52 @@ const materialBatchScannedTag = Tag<InputMaterialBatchScannedEvent>('MaterialBat
 
 // [[start:group]]
 export const MaterialBatchFishes = {
-  tags: { 
+  tags: {
     materialBatchTag,
     materialBatchScannedTag
-   },
+  },
   of: (
     batchId: string,
-    ): Fish<MaterialBatchState, MaterialBatchEvent | InputMaterialBatchScannedEvent> => ({
-      // [[end:group]]
-      fishId: FishId.of('MaterialBatch', batchId, 0),
-      initialState: {
-        state: 'unknown',
-        batchId,
-      },
-      where: materialBatchTag.withId(batchId),
-      onEvent: (state, event) => {
-        console.log(event)
-        switch (event.eventType) {
-          case 'inputMaterialBatchScanned': {
-            if (state.state === 'unknown') {
-              return {
-                state: 'defined',
-                batchId,
-                batchSize: 25,
-                availableMaterial: 25,
-                consumedByMachine: {},
-                consumedByOrder: {},
-              }
-            } else {
-              // Only the first scan creates the batch in the system.
-              return state
+  ): Fish<MaterialBatchState, MaterialBatchEvent | InputMaterialBatchScannedEvent> => ({
+    // [[end:group]]
+    fishId: FishId.of('MaterialBatch', batchId, 0),
+    initialState: {
+      state: 'unknown',
+      batchId,
+    },
+    where: materialBatchTag.withId(batchId),
+    onEvent: (state, event) => {
+      console.log(event)
+      switch (event.eventType) {
+        case 'inputMaterialBatchScanned': {
+          if (state.state === 'unknown') {
+            return {
+              state: 'defined',
+              batchId,
+              batchSize: 25,
+              availableMaterial: 25,
+              consumedByMachine: {},
+              consumedByOrder: {},
             }
+          } else {
+            // Only the first scan creates the batch in the system.
+            return state
           }
-          case 'inputMaterialConsumed': {
-            if (state.state === 'defined') {
-              // Manipulate state if the batch is defined.
-              state.availableMaterial -= 1
-              
-              const lastConsumedByMachine = state.consumedByMachine[event.device] || 0
-              state.consumedByMachine[event.device] = lastConsumedByMachine + 1
-              
-              const lastConsumedByOrder = state.consumedByOrder[event.orderId] || 0
-              state.consumedByOrder[event.orderId] = lastConsumedByOrder + 1
-            }
-            // We should add a hint, that in this use-case the inputMaterialConsumed can not appear before a inputMaterialBatchScanned
-            // was triggered. (causality)
-            // Fullfil all possible cases is the easy solution in a evtl-const-system.
+        }
+        case 'inputMaterialConsumed': {
+          if (state.state === 'defined') {
+            // Manipulate state if the batch is defined.
+            state.availableMaterial -= 1
+
+            const lastConsumedByMachine = state.consumedByMachine[event.device] || 0
+            state.consumedByMachine[event.device] = lastConsumedByMachine + 1
+
+            const lastConsumedByOrder = state.consumedByOrder[event.orderId] || 0
+            state.consumedByOrder[event.orderId] = lastConsumedByOrder + 1
+          }
+          // We should add a hint, that in this use-case the inputMaterialConsumed can not appear before a inputMaterialBatchScanned
+          // was triggered. (causality)
+          // Fullfil all possible cases is the easy solution in a evtl-const-system.
           //   But if you know the domain, some cases will never happen and you wast your time :-)
           /* we should skip this for now and ignore the event.
           *  else {
@@ -112,15 +112,27 @@ export const MaterialBatchFishes = {
            *      }, metadata)
            *  }
           */
-         return state
+          return state
         }
       }
       return state
     },
     // [[start:group]]
   }),
-  all: { /* ... */ },
-  
+  all: {
+    // [[end:group]]
+    fishId: FishId.of('MaterialBatchRegistry', 'all', 0),
+    initialState: {},
+    where: materialBatchScannedTag,
+    onEvent: (state, event) => {
+      if (event.eventType === 'inputMaterialBatchScanned') {
+        state[event.batchId] = true
+      }
+      return state
+    },
+  } as Fish<Record<string, boolean>, InputMaterialBatchScannedEvent>,
+  // [[start:group]]
+
   emitInputMaterialConsumed,
 }
 // [[end:group]]
