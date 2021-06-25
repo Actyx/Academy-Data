@@ -155,7 +155,7 @@ export const ProductionOrdersFish = {
                     else {
                         state.orders[event.orderId] = {
                             orderId: event.orderId,
-                            state: 'placed',
+                            state: 'started',
                             machineId: event.machineId,
                             amount: -1,
                             article: 'unknown',
@@ -172,7 +172,7 @@ export const ProductionOrdersFish = {
                     else {
                         state.orders[event.orderId] = {
                             orderId: event.orderId,
-                            state: 'placed',
+                            state: 'finished',
                             machineId: event.machineId,
                             amount: -1,
                             article: 'unknown',
