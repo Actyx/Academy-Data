@@ -69,7 +69,7 @@ export const emitProductionOrderCreatedEvent = (
     amount: number,
 ): PendingEmission =>
     pond.emit(productionOrderTag.withId(orderId)
-        .and(productionOrderCreatedTag), 
+        .and(productionOrderCreatedTag),
         {
             eventType: 'productionOrderCreated',
             orderId,
@@ -228,19 +228,24 @@ export const ProductionOrdersFish = {
     // [[start:open-registry]]
     openAssignedToMachine: (
         machineId: string,
-        ): Fish<Record<string, boolean>, ProductionOrderEvent | ProductionOrderFinishedEvent> => ({
-            fishId: FishId.of('ProductionOrders.openAssignedToMachine', machineId, 0),
-            initialState: {}, // initial state with no known production order id
-            where: productionOrderCreatedTag.or(productionOrderFinishedByTag.withId(machineId)),
-            onEvent: (state, event) => {
-                switch (event.eventType) {
-                    case 'productionOrderCreated':
-                        state[event.orderId] = true
-                        return state
-                    }
+    ): Fish<Record<string, boolean>, ProductionOrderEvent | ProductionOrderFinishedEvent> => ({
+        fishId: FishId.of('ProductionOrders.openAssignedToMachine', machineId, 0),
+        initialState: {}, // initial state with no known production order id
+        where: productionOrderCreatedTag.or(productionOrderFinishedByTag.withId(machineId)),
+        onEvent: (state, event) => {
+            switch (event.eventType) {
+                case 'productionOrderCreated':
+                    state[event.orderId] = true
                     return state
-                },
-            }),
+                case 'productionOrderFinished':
+                    state[event.orderId] = false
+                    return state
+                default:
+                    return state
+            }
+            return state
+        },
+    }),
     // [[end:open-registry]]
     // [[end:fish-skeleton]]
     emitProductionOrderCreatedEvent,
