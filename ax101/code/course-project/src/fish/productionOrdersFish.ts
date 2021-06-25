@@ -194,7 +194,7 @@ export const ProductionOrdersFish = {
                 // [[start:add-consumed-material-to-fish]]
                 case 'inputMaterialConsumed':
                     if (state.orders[event.orderId]) {
-                        // get the last value. If undefined, the values is 0
+                        // Get the last value. If undefined, the value is 0.
                         const lastValue = state.orders[event.orderId].consumedMaterial[event.batchId] || 0
                         state.orders[event.orderId].consumedMaterial[event.batchId] = lastValue + 1
                     } else {
