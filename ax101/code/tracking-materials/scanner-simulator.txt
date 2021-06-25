@@ -1,0 +1,16 @@
+
+# [[start:scanner-simulator]]
+$ npx @actyx-contrib/actyx-tutorial-simulator ax101-3-scanner --port 1885
+
+Use your keyboard to simulate a Barcode or RFID scanner.
+The scanner will send MQTT packages on the 'scan' topic.
+Two packages are generated:
+1. scanned: '{ "event": "scanned", "value": "<id>" }'
+2. lost:    '{ "event": "lost" }'
+
+MQTT-server available on port  1885
+Available commands are:
+ r      - Send a random uuid as 'scanned' package
+ l      - Send 'lost' package
+ s <ID> - Send given id as 'scanned' package
+# [[end:scanner-simulator]]
