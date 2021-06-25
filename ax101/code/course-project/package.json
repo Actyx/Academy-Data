@@ -30,7 +30,12 @@
     "ui:production-order-system:package": "ax apps package src/production-order-system/ax-manifest.yml",
     "ui:machine-terminal:start": "parcel src/machine-terminal/index.html --out-dir build/machine-terminal/debug --port 1235",
     "ui:machine-terminal:build": "parcel build src/machine-terminal/index.html --out-dir src/machine-terminal/release --public-url ./",
-    "ui:machine-terminal:package": "ax apps package src/machine-terminal/ax-manifest.yml"
+    "ui:machine-terminal:package": "ax apps package src/machine-terminal/ax-manifest.yml",
+    "node:input-material-scanner-connector:start": "nodemon --watch src/input-material-scanner-connector --exec ts-node src/input-material-scanner-connector/index.ts",
+    "node:input-material-scanner-connector:build": "tsc src/input-material-scanner-connector/index.ts --outDir build/input-material-scanner-connector --esModuleInterop --skipLibCheck",
+    "node:input-material-scanner-connector:docker:build": "npm run node:input-material-scanner-connector:build && docker build -t input-material-scanner-connector -f src/input-material-scanner-connector/Dockerfile .",
+    "node:input-material-scanner-connector:docker:build-aarch64": "npm run node:input-material-scanner-connector:build && docker buildx build --platform linux/arm64 -t input-material-scanner-connector-aarch64 -f src/input-material-scanner-connector/Dockerfile --load .",
+    "node:input-material-scanner-connector:package": "ax apps package src/input-material-scanner-connector/ax-manifest.yml"
   },
   "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
@@ -69,6 +74,7 @@
     "bootstrap": "^5.0.1",
     "fp-ts": "^2.10.5",
     "io-ts": "^2.2.16",
+    "mqtt": "^4.2.8",
     "node-opcua": "^2.43.0",
     "pg": "^8.6.0",
     "react": "^17.0.2",
