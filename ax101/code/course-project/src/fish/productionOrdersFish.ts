@@ -10,6 +10,7 @@ type Order = {
     machineId: string
     article: string
     amount: number
+    consumedMaterial: Record<string, number>
 }
 // [[end:order-type]]
 
@@ -18,7 +19,6 @@ export type ProductionOrdersState = {
     orders: Record<string, Order>
 }
 // [[end:orders-state-type]]
-
 
 //[[start:event-type-created]]
 export type ProductionOrderCreatedEvent = {
@@ -46,7 +46,6 @@ export type ProductionOrderFinishedEvent = {
 }
 //[[end:event-type-finished]]
 
-
 // [[start:event-type-po]]
 type ProductionOrderEvent =
     | ProductionOrderCreatedEvent
@@ -56,6 +55,7 @@ type ProductionOrderEvent =
 
 // [[start:tags]]
 const productionOrderTag = Tag<ProductionOrderEvent | InputMaterialConsumedEvent>('ProductionOrder')
+const productionOrderCreatedTag = Tag<ProductionOrderCreatedEvent>('ProductionOrder.created')
 const productionOrderStartedByTag = Tag<ProductionOrderStartedEvent>('ProductionOrder.startedBy')
 const productionOrderFinishedByTag = Tag<ProductionOrderFinishedEvent>('ProductionOrder.finishedBy')
 // [[end:tags]]
@@ -68,7 +68,8 @@ export const emitProductionOrderCreatedEvent = (
     article: string,
     amount: number,
 ): PendingEmission =>
-    pond.emit(productionOrderTag.withId(orderId),
+    pond.emit(productionOrderTag.withId(orderId)
+        .and(productionOrderCreatedTag), 
         {
             eventType: 'productionOrderCreated',
             orderId,
@@ -117,15 +118,20 @@ export const emitProductionOrderFinishedEvent = (
 export const ProductionOrdersFish = {
     // [[end:emitters]]
     // [[end:fish-skeleton]]
+    // [[start:add-tag]]
     tags: {
         productionOrderTag,
+        productionOrderCreatedTag,
         productionOrderStartedByTag,
         productionOrderFinishedByTag
     },
+    // [[end:add-tag]]
     // [[start:fish-skeleton]]
     // twin implementation
     // [[start:emitters]]
+    // [[start:add-InputMaterialConsumedEvent-to-ProductionOrder-tag]]
     all: {
+        // [[end:add-InputMaterialConsumedEvent-to-ProductionOrder-tag]]
         // [[end:emitters]]
         // [[end:fish-tags]]
         fishId: FishId.of('ProductionOrders', 'all', 0),
@@ -133,7 +139,9 @@ export const ProductionOrdersFish = {
         where: productionOrderTag,
         // [[start:on-event]]
         // [[start:on-event-1]]
+        // [[start:add-consumed-material-to-fish]]
         onEvent: (state, event) => {
+            // [[end:add-consumed-material-to-fish]]
             // [[end:fish-skeleton]]
             switch (event.eventType) {
                 case 'productionOrderCreated':
@@ -143,13 +151,13 @@ export const ProductionOrdersFish = {
                         machineId: event.machineId,
                         amount: event.amount,
                         article: event.article,
+                        consumedMaterial: {},
                     }
                     return state
 
                 case 'productionOrderStarted':
                     if (state.orders[event.orderId]) {
                         state.orders[event.orderId].state = 'started'
-
                     }
                     // [[end:on-event-1]]
                     else {
@@ -159,6 +167,7 @@ export const ProductionOrdersFish = {
                             machineId: event.machineId,
                             amount: -1,
                             article: 'unknown',
+                            consumedMaterial: {},
                         }
                     }
                     // [[start:on-event-1]]
@@ -176,9 +185,32 @@ export const ProductionOrdersFish = {
                             machineId: event.machineId,
                             amount: -1,
                             article: 'unknown',
+                            consumedMaterial: {},
                         }
                     }
                     // [[start:on-event-1]]
+                    return state
+
+                // [[start:add-consumed-material-to-fish]]
+                case 'inputMaterialConsumed':
+                    if (state.orders[event.orderId]) {
+                        // get the last value. If undefined, the values is 0
+                        const lastValue = state.orders[event.orderId].consumedMaterial[event.batchId] || 0
+
+                        state.orders[event.orderId].consumedMaterial[event.batchId] = lastValue + 1
+                    } else {
+                        state.orders[event.orderId] = {
+                            orderId: event.orderId,
+                            state: 'started',
+                            machineId: event.device,
+                            amount: -1,
+                            article: 'unknown',
+                            consumedMaterial: {
+                                [event.batchId]: 1,
+                            },
+                        }
+                    }
+                    // [[end:add-consumed-material-to-fish]]
                     return state
 
                 default:
@@ -190,11 +222,31 @@ export const ProductionOrdersFish = {
         // [[end:on-event-1]]
         // [[end:on-event]]
         // [[start:emitters]]
-    } as Fish<ProductionOrdersState, ProductionOrderEvent>,
+        // [[start:add-InputMaterialConsumedEvent-to-ProductionOrder-tag]]
+    } as Fish<ProductionOrdersState, ProductionOrderEvent | InputMaterialConsumedEvent>,
+    // [[end:add-InputMaterialConsumedEvent-to-ProductionOrder-tag]]
+
+    // [[start:open-registry]]
+    openAssignedToMachine: (
+        machineId: string,
+        ): Fish<Record<string, boolean>, ProductionOrderEvent | ProductionOrderFinishedEvent> => ({
+            fishId: FishId.of('ProductionOrders.openAssignedToMachine', machineId, 0),
+            initialState: {}, // initial state with no known production order id
+            where: productionOrderCreatedTag.or(productionOrderFinishedByTag.withId(machineId)),
+            onEvent: (state, event) => {
+                switch (event.eventType) {
+                    case 'productionOrderCreated':
+                        state[event.orderId] = true
+                        return state
+                    }
+                    return state
+                },
+            }),
+    // [[end:open-registry]]
     // [[end:fish-skeleton]]
     emitProductionOrderCreatedEvent,
     emitProductionOrderStartedEvent,
-    emitProductionOrderFinishedEvent
+    emitProductionOrderFinishedEvent,
     // [[end:emitters]]
 
     // [[start:fish-skeleton]]
