@@ -35,7 +35,12 @@
     "node:input-material-scanner-connector:build": "tsc src/input-material-scanner-connector/index.ts --outDir build/input-material-scanner-connector --esModuleInterop --skipLibCheck",
     "node:input-material-scanner-connector:docker:build": "npm run node:input-material-scanner-connector:build && docker build -t input-material-scanner-connector -f src/input-material-scanner-connector/Dockerfile .",
     "node:input-material-scanner-connector:docker:build-aarch64": "npm run node:input-material-scanner-connector:build && docker buildx build --platform linux/arm64 -t input-material-scanner-connector-aarch64 -f src/input-material-scanner-connector/Dockerfile --load .",
-    "node:input-material-scanner-connector:package": "ax apps package src/input-material-scanner-connector/ax-manifest.yml"
+    "node:input-material-scanner-connector:package": "ax apps package src/input-material-scanner-connector/ax-manifest.yml",
+    "node:machine-connector-v2:start": "nodemon --watch src/machine-connector-v2 --exec ts-node src/machine-connector-v2/index.ts",
+    "node:machine-connector-v2:build": "tsc src/machine-connector-v2/index.ts --outDir build/machine-connector-v2 --esModuleInterop --skipLibCheck",
+    "node:machine-connector-v2:docker:build": "npm run node:machine-connector-v2:build && docker build -t machine-connector-v2 -f src/machine-connector-v2/Dockerfile .",
+    "node:machine-connector-v2:docker:build-aarch64": "npm run node:machine-connector-v2:build && docker buildx build --platform linux/arm64 -t machine-connector-v2-aarch64 -f src/machine-connector-v2/Dockerfile --load .",
+    "node:machine-connector-v2:package": "ax apps package src/machine-connector-v2/ax-manifest.yml"
   },
   "academyTagNpmEnd": "[[end:npm-scripts]]",
   "keywords": [],
