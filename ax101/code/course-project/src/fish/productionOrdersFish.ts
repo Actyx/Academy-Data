@@ -134,7 +134,7 @@ export const ProductionOrdersFish = {
         // [[end:add-InputMaterialConsumedEvent-to-ProductionOrder-tag]]
         // [[end:emitters]]
         // [[end:fish-tags]]
-        fishId: FishId.of('ProductionOrders', 'all', 0),
+        fishId: FishId.of('ProductionOrders', 'all', 1),
         initialState: { orders: {} }, // initial state value of type ProductionOrdersState
         where: productionOrderTag,
         // [[start:on-event]]
