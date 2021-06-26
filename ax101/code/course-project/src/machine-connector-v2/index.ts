@@ -1,10 +1,6 @@
 // [[start:mqtt-start]]
 import { Pond } from '@actyx/pond'
 // [[end:mqtt-start]]
-// [[start:get-assigned-orders]]
-// npm i @actyx-contrib/registry
-// import { observeRegistry } from '@actyx-contrib/registry'
-// [[end:get-assigned-orders]]
 // [[start:mqtt-start]]
 import * as mqtt from 'mqtt'
 // [[end:mqtt-start]]
