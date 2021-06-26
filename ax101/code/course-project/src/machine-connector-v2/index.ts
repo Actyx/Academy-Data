@@ -145,7 +145,7 @@ Pond.default().then((pond) => {
   const mqttClient = mqtt.connect('mqtt://localhost:1884')
   mqttClient.on('connect', () => {
     console.log('mqtt connection established')
-    mqttClient.subscribe(['material'], () => {
+    mqttClient.subscribe(['material', 'error'], () => {
       console.log('mqtt subscription on "material" and "error" established')
       // [[end:mqtt-start]]
       // [[start:handle-mqtt-message]]
