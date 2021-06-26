@@ -89,7 +89,7 @@ Pond.default().then((pond) => {
       console.log(`In progress ${order.orderId}, ${rest} parts are missing`)
     }
   }
-  // [[end:handle-start-or-switch-order]]
+  // [[end:handle-order-during-production]]
 
   // [[start:map-fish-state-to-machine-control-structure]]
   let currentOrderId: string | undefined = undefined
