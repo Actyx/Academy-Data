@@ -10,12 +10,6 @@ import { ProductionOrdersFish, ProductionOrdersState } from '../fish/productionO
 import { MaterialBatchFishes } from '../fish/materialBatchFish'
 // [[end:handle-mqtt-message]]
 
-// 1. mqtt-start  --  same mqtt-wrapper as scanner connector (wuhu we have found a pattern)
-// 2. handle-mqtt-message -- with different topics
-// 3. observe-batch-number-scanner
-// 4. observe-openAssignedToMachine-and-all
-// 5. map-fish-state-to-machine-control-structure
-
 // [[start:mqtt-start]]
 Pond.default().then((pond) => {
   const machineId = 'machine1'
