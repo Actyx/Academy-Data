@@ -144,7 +144,7 @@ Pond.default().then((pond) => {
     mqttClient.subscribe(['material', 'error'], () => {
       console.log('mqtt subscription on "material" and "error" established')
       // [[end:mqtt-start]]
-      // [[start:handle-mqtt-message]]
+      // [[start:handle-mqtt-message-2]]
       mqttClient.on('message', (topic, msg) => {
         switch (topic) {
           case 'material':
@@ -155,7 +155,7 @@ Pond.default().then((pond) => {
             break
         }
       })
-      // [[end:handle-mqtt-message]]
+      // [[end:handle-mqtt-message-2]]
       // [[start:mqtt-start]]
     })
   })
