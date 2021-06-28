@@ -36,9 +36,15 @@ ax101/hpo/ua/mt/start
 ax101/hpo/ua/mt/end
 ax101/hpo/ua/mt-s/start	
 ax101/hpo/ua/mt-s/end
-ax101/hpo/ua/mt-o/start	
+ax101/hpo/ua/mt-o/start
 ax101/hpo/ua/mt-o/end
 ax101/tm/lt/mb-e/start
 ax101/tm/lt/mb-e/end
 ax101/tm/lt/bs/start
 ax101/tm/lt/bs/end
+ax101/tm/ca/sc/start
+ax101/tm/ca/sc/end
+ax101/tm/ca/po/start
+ax101/tm/ca/po/end
+ax101/tm/ca/mc/start
+ax101/tm/ca/mc/end
