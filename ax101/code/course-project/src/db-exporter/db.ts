@@ -74,11 +74,11 @@ export const storeOffsetMap = async (client: Client, offsetMap: OffsetMap): Prom
 
 // [[start:get-offsets]]
 export const loadOffsetMap = async (client: Client): Promise<OffsetMap> => {
-    const res = await client.query<{ offsetMap: string }>(
+    const res = await client.query<{ offset_map: string }>(
         `SELECT offset_map FROM public.offset_map WHERE id=1`,
     )
-    if (res.rowCount > 0 && res.rows[0].offsetMap) {
-        return JSON.parse(res.rows[0].offsetMap)
+    if (res.rowCount > 0 && res.rows[0].offset_map) {
+        return JSON.parse(res.rows[0].offset_map)
     } else {
         console.warn('Could not read OffsetMap from database. That is ok, if the application has not yet pushed events to the DB.')
         return {}
