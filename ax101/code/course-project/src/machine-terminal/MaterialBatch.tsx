@@ -24,6 +24,7 @@ export const MaterialBatch = ({ batchId }: MaterialBatchProps): JSX.Element => {
   // [[start:add-batch-per-order]]
   const byOrder = Object.entries(batchFish.state.consumedByOrder)
   // [[end:add-batch-per-order]]
+  const byMachine = Object.entries(state.consumedByMachine)
 
   // [[start:material-batch-component]]
   return (
@@ -36,6 +37,14 @@ export const MaterialBatch = ({ batchId }: MaterialBatchProps): JSX.Element => {
           <td>{state.batchId}</td>
         </tr>
         {/* [[end:add-batch-info]] */}
+        <tr>
+          <td scope="row">Batch size</td>
+          <td>{state.batchSize}</td>
+        </tr>
+        <tr>
+          <td scope="row">Available material</td>
+          <td>{state.availableMaterial}</td>
+        </tr>
         {/* [[start:add-batch-per-order]] */}
         <tr>
           <th scope="col" colSpan={2}>
@@ -49,6 +58,17 @@ export const MaterialBatch = ({ batchId }: MaterialBatchProps): JSX.Element => {
           </tr>
         ))}
         {/* [[end:add-batch-per-order]] */}
+        <tr>
+          <th scope="col" colSpan={2}>
+            Consumed material by Machine
+          </th>
+        </tr>
+        {byMachine.map(([machine, amount]) => (
+          <tr key={machine}>
+            <td scope="row">{machine}</td>
+            <td>{amount}</td>
+          </tr>
+        ))}
         {/* [[start:material-batch-component]] */}
       </tbody>
     </table>
