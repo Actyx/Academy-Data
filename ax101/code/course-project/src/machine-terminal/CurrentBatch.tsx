@@ -20,11 +20,11 @@ export const CurrentBatch = ({ machineId }: CurrentBatchProps): JSX.Element => {
       <div className="card-header">Input material batch scanner</div>
       {/* [[start:batch-no]] */}
       <div className="card-body">
-        {/* [[start:current-batch-component]] */}
+        {/* [[end:current-batch-component]] */}
         {(scan && scan.state.state === 'engaged' && (
           <MaterialBatch batchId={scan.state.value} />
         )) || <div>Nothing scanned</div>}
-        {/* [[end:current-batch-component]] */}
+        {/* [[start:current-batch-component]] */}
       </div>
       {/* [[end:batch-no]] */}
     </div>
