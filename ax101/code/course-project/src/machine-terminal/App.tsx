@@ -16,7 +16,7 @@ export const App = (): JSX.Element => {
       <div className="row mt-4">
         <div className="col-5">
           <MachineState machineId={machineId} />
-          <CurrentBatch machineId={machineId} />
+          <br/><CurrentBatch machineId={machineId} />
         </div>
         <div className="col-7">
           <AssignedOrders machineId={machineId} />
