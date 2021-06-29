@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { AssignedOrders } from './AssignedOrders'
+import { CurrentBatch } from './CurrentBatch'
 import { MachineState } from './MachineState'
 
 export const App = (): JSX.Element => {
@@ -15,6 +16,7 @@ export const App = (): JSX.Element => {
       <div className="row mt-4">
         <div className="col-5">
           <MachineState machineId={machineId} />
+          <CurrentBatch machineId={machineId} />
         </div>
         <div className="col-7">
           <AssignedOrders machineId={machineId} />
