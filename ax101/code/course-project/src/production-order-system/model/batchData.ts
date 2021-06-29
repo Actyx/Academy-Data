@@ -23,11 +23,11 @@ export const batchData = (): BatchData => {
     MaterialBatchFishes.all,
     Object.keys,
     MaterialBatchFishes.of,
-    )
-    // [[end:registry]]
-    
-    // [[start:map]]
-    return materialBatches
+  )
+  // [[end:registry]]
+
+  // [[start:map]]
+  return materialBatches
     .map((batch) => batch.state)
     .filter((batch): batch is DefinedState => batch.state === 'defined')
     .map(({ batchId, batchSize, availableMaterial, consumedByMachine, consumedByOrder }) => ({
@@ -37,8 +37,9 @@ export const batchData = (): BatchData => {
       machines: Object.keys(consumedByMachine),
       orders: Object.keys(consumedByOrder),
     }))
-    // [[start:model]]
-    // [[start:registry]]
-  }
-  // [[end:registry]]
-  // [[end:model]]
+  // [[end:map]]
+  // [[start:model]]
+  // [[start:registry]]
+}
+// [[end:registry]]
+// [[end:model]]
