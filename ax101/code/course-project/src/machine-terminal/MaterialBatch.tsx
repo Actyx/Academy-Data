@@ -32,7 +32,7 @@ export const MaterialBatch = ({ batchId }: MaterialBatchProps): JSX.Element => {
         {/* [[end:material-batch-component]] */}
         {/* [[start:add-batch-info]] */}
         <tr>
-          <td scope="row">batch number</td>
+          <td scope="row">Batch number</td>
           <td>{state.batchId}</td>
         </tr>
         {/* [[end:add-batch-info]] */}
