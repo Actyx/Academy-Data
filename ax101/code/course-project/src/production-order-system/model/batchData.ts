@@ -29,7 +29,7 @@ export const batchData = (): BatchData => {
   // [[start:map]]
   return materialBatches
     .map((batch) => batch.state)
-    .filter((batch): batch is DefinedState => batch.state === 'defined')
+    .filter((batchState): batchState is DefinedState => batchState.state === 'defined')
     .map(({ batchId, batchSize, availableMaterial, consumedByMachine, consumedByOrder }) => ({
       batchId,
       batchSize,
