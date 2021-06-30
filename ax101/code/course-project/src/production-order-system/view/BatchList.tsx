@@ -30,7 +30,7 @@ export const BatchList = ({ allBatches, onFreeze }: BatchListComponentProps): JS
             <td>{machines.join(', ')}</td>
             <td>{orders.join(', ')}</td>
             <td>
-              <button onClick={() => onFreeze(batchId)}>freeze</button>
+              <button className="btn btn-danger" onClick={() => onFreeze(batchId)}>freeze</button>
             </td>
           </tr>
         ))}
