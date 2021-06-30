@@ -1,3 +1,4 @@
+// [[start:component]]
 import * as React from 'react'
 import { BatchData } from '../model/batchData'
 
@@ -18,7 +19,9 @@ export const BatchList = ({ allBatches, onFreeze }: BatchListComponentProps): JS
           <th scope="col"></th>
         </tr>
       </thead>
+      { /* [[start:binding]] */ }
       <tbody>
+      { /* [[end:component]] */ }
         {allBatches.map(({ batchId, batchSize, availableMaterial, machines, orders }) => (
           <tr key={batchId}>
             <th scope="row">{batchId.substr(0, 13)}</th>
@@ -31,7 +34,10 @@ export const BatchList = ({ allBatches, onFreeze }: BatchListComponentProps): JS
             </td>
           </tr>
         ))}
+        { /* [[start:component]] */ }
       </tbody>
+        { /* [[end:binding]] */ }
     </table>
   )
 }
+// [[end:component]]
