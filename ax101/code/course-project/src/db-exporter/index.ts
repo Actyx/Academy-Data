@@ -1,5 +1,6 @@
 // [[start:scaffold]]
-import { OffsetMap, Pond, Tag } from '@actyx/pond'
+import { OffsetMap, Pond, Tag, EventsSortOrder } from '@actyx/pond'
+import manifest from './manifest'
 import { isMachineStateChangedEvent } from '../fish/events'
 import { loadOffsetMap, initDb, updateDb } from './db'
 // [[end:scaffold]]
@@ -26,7 +27,7 @@ const exitApp = () => process.exit(6) // exit with arbitrary error code 6
 const main = async () => {
   // [[end:init-db]]
   // [[end:scaffold]]
-  const pond = await Pond.default()
+  const pond = await Pond.default(manifest)
   // [[start:init-db]]
   console.info('init PostgreSQL connection')
   const db = await initDb(settings.db)
@@ -40,25 +41,31 @@ const main = async () => {
   let lowerBound = await loadOffsetMap(db)
   let queryActive = false
   // [[start:insert-process-state]]
-  
+
   // [[start:bulk-insert]]
   const bulkInsert = async (lowerBound: OffsetMap): Promise<OffsetMap> => {
     queryActive = true
-    const newLowerBound = await pond.events().queryAllKnownChunked(
-      {
-        lowerBound,
-        order: 'Asc',
-        query: Tag('Machine.state'),
-      },
-      100,
-      async (chunk) => {
-        console.info(`Exporting ${chunk.events.length || 0} events.`)
-        await updateDb(
-          db,
-          chunk.events.filter(isMachineStateChangedEvent)
-          , chunk.upperBound)
-      },
-    )
+    const newLowerBound = await new Promise<OffsetMap>((res) => {
+      let lastOffsetMap = lowerBound
+      pond.events().queryAllKnownChunked(
+        {
+          lowerBound,
+          order: EventsSortOrder.Ascending,
+          query: Tag('Machine.state'),
+        },
+        100,
+        async (chunk) => {
+          console.info(`Exporting ${chunk.events.length || 0} events.`)
+          await updateDb(
+            db,
+            chunk.events.filter(isMachineStateChangedEvent)
+            , chunk.upperBound)
+          lastOffsetMap = chunk.upperBound
+        },
+        () => res(lastOffsetMap)
+      )
+    })
+
     queryActive = false
     return newLowerBound
   }
