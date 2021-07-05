@@ -1,5 +1,6 @@
 // [[start:imports]]
 import { Pond, Tag } from '@actyx/pond'
+import manifest from './manifest'
 import {
   AttributeIds,
   ClientMonitoredItem,
@@ -16,7 +17,7 @@ import { MachineStateChangedEvent } from '../fish/events';
 // [[end:imports]]
 
 // [[start:main-harness]]
-Pond.default().then(async (pond) => {
+Pond.default(manifest).then(async (pond) => {
   // [[end:main-harness]]
 
   // [[start:client]]
@@ -68,7 +69,7 @@ Pond.default().then(async (pond) => {
     discardOldest: true,
     queueSize: 10
   };
-  
+
   // monitor variable
   const monitoredItem = ClientMonitoredItem.create(
     subscription,
@@ -76,7 +77,7 @@ Pond.default().then(async (pond) => {
     parameters,
     TimestampsToReturn.Server
     );
-    
+
     monitoredItem.on("changed", (dataValue: DataValue) => {
       console.log("Read changed value from OPC UA server : ", dataValue.value.value);
       // [[end:monitor]]
@@ -89,13 +90,13 @@ Pond.default().then(async (pond) => {
         state: dataValue.value.value, // value from opcua
         stateDesc: '' // omit description
       }
-      
+
       const machineTag = Tag<MachineStateChangedEvent>('Machine').withId(machineId)
       const machineStateTag = Tag<MachineStateChangedEvent>('Machine.state').withId(machineId)
-      
+
       console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
       pond.emit(machineTag.and(machineStateTag), changeEvent)
-      
+
       // [[end:emission]]
       // [[start:monitor]]
   });
