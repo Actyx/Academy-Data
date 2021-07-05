@@ -1,9 +1,0 @@
-{
-  "name": "db-exporter",
-  "version": "1.0.0",
-  "main": "db-exporter/index.js",
-  "license": "ISC",
-  "dependencies": {
-    "@actyx/pond": "2"
-  }
-}
