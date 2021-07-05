@@ -1,5 +1,6 @@
 // [[start:import]]
 import { Pond, Tag } from '@actyx/pond'
+import manifest from './manifest'
 import { startOpcuaServer } from './opcua-server'
 import { MachineStateChangedEvent } from '../fish/events'
 // [[end:import]]
@@ -22,7 +23,7 @@ export function randomMachineState(): MachineState {
 // [[end:random]]
 
 // [[start:impl]]
-Pond.default().then((pond) => {
+Pond.default(manifest).then((pond) => {
   setInterval(() => {
     const newState = randomMachineState()
     const changeEvent: MachineStateChangedEvent = {
@@ -31,11 +32,11 @@ Pond.default().then((pond) => {
       state: newState === MachineState.ERROR ? Math.floor(Math.random() * 10) + 11 : newState,
       stateDesc: MachineState[newState]
     }
-    
+
     const machineId = 'Mock-1'
     const machineTag = Tag<MachineStateChangedEvent>('Machine').withId(machineId)
     const machineStateTag = Tag<MachineStateChangedEvent>('Machine.state').withId(machineId)
-    
+
     console.debug(`Emitting ${JSON.stringify(changeEvent)}`)
     pond.emit(machineTag.and(machineStateTag), changeEvent)
 
