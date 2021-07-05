@@ -1,6 +1,10 @@
 import { Pond } from '@actyx/pond'
+import manifest from './manifest'
 
-Pond.default().then((pond) => {
+Pond.default(manifest).then((pond) => {
+
+  console.log(pond.info())
+
   // start something awesome here
   // -------------------------------
   //
