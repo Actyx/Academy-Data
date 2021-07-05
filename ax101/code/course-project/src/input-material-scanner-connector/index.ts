@@ -1,5 +1,6 @@
 // [[start:structure]]
 import { Pond } from '@actyx/pond'
+import manifest from './manifest'
 // [[end:structure]]
 // npm i mqtt
 // [[start:connect-mqtt]]
@@ -11,7 +12,7 @@ import { BatchNumberScannerFishes } from '../fish/batchNumberScannerFish'
 
 // [[start:connect-mqtt]]
 // [[start:structure]]
-Pond.default().then((pond) => {
+Pond.default(manifest).then((pond) => {
   // [[end:connect-mqtt]]
   const machineId = 'machine1'
   // [[end:structure]]
