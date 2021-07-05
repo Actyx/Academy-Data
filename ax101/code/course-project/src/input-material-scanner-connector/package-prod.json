@@ -1,9 +1,0 @@
-{
-  "name": "input-material-scanner-connector",
-  "version": "1.0.0",
-  "main": "input-material-scanner-connector/index.js",
-  "license": "ISC",
-  "dependencies": {
-    "@actyx/pond": "2"
-  }
-}
