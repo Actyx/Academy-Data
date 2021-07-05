@@ -1,5 +1,6 @@
 // [[start:mqtt-start]]
 import { Pond } from '@actyx/pond'
+import manifest from './manifest'
 // [[end:mqtt-start]]
 // [[start:mqtt-start]]
 import * as mqtt from 'mqtt'
@@ -11,7 +12,7 @@ import { MaterialBatchFishes } from '../fish/materialBatchFish'
 // [[end:handle-mqtt-message]]
 
 // [[start:mqtt-start]]
-Pond.default().then((pond) => {
+Pond.default(manifest).then((pond) => {
   const machineId = 'machine1'
   // [[end:mqtt-start]]
 
