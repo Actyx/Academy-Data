@@ -1,9 +1,0 @@
-{
-  "name": "machine-mock",
-  "version": "1.0.0",
-  "main": "machine-mock/index.js",
-  "license": "ISC",
-  "dependencies": {
-    "@actyx/pond": "2"
-  }
-}
