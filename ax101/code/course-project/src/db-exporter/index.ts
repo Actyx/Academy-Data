@@ -1,5 +1,6 @@
 // [[start:scaffold]]
 import { Pond } from '@actyx/pond'
+import manifest from './manifest'
 import { Client } from 'pg'
 // [[end:scaffold]]
 
@@ -25,7 +26,7 @@ const exitApp = () => process.exit(6) // exit with arbitrary error code 6
 const main = async () => {
   // [[end:init-db]]
   // [[end:scaffold]]
-  const pond = await Pond.default()
+  const pond = await Pond.default(manifest)
   // [[start:init-db]]
   console.info('init PostgreSQL connection')
   const db = await initDb(settings.db)
