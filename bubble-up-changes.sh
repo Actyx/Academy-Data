@@ -58,6 +58,8 @@ while read branch; do
     continue; 
   else
     git checkout $branch;
+    git fetch
+    git rebase
     echo "$branch after $startBranch. Merging $previousBranch."
     git merge -m "Merging updates from $previousBranch" $previousBranch
     if [ "$opt_push" == "true" ]; then
