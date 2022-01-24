@@ -34,7 +34,7 @@ export const initDb = async (settings: DbSettings): Promise<Client> => {
     await client.query(
         `CREATE TABLE IF NOT EXISTS public.machine_state_change
       (
-            id character varying(40) NOT NULL,
+            id character varying(100) NOT NULL,
             time timestamp with time zone NOT NULL,
             device character varying(100) NOT NULL,
             new_state integer NOT NULL,
